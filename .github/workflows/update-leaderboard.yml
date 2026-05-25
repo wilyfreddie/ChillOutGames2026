@@ -1,0 +1,163 @@
+name: Update Leaderboard Data
+
+on:
+  schedule:
+    - cron: "0 10 * * 4"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build data.json from Google Sheets CSV
+        env:
+          SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+        run: |
+          python - <<'PY'
+          import csv
+          import io
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+          from collections import defaultdict
+
+          SHEET_ID = os.environ["SHEET_ID"]
+          SHEETS = ["Roster", "Swaps", "WOD_Info", "WOD_1", "WOD_2", "WOD_3", "WOD_4"]
+
+          def fetch_csv(sheet_name):
+              encoded = urllib.parse.quote(sheet_name)
+              url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={encoded}"
+              with urllib.request.urlopen(url) as response:
+                  text = response.read().decode("utf-8-sig")
+              return list(csv.DictReader(io.StringIO(text)))
+
+          tables = {name: fetch_csv(name) for name in SHEETS}
+
+          teams = {}
+          roster_by_team = defaultdict(list)
+          captains = {}
+
+          for row in tables["Roster"]:
+              team_id = row["team_id"].strip()
+              athlete = row["athlete_name"].strip()
+              teams.setdefault(team_id, {
+                  "id": team_id,
+                  "name": row["team_name"].strip(),
+                  "division": row["division"].strip(),
+                  "captain": "",
+                  "roster": {},
+                  "swaps": [],
+                  "scores": [],
+                  "total_points": 0,
+                  "overall_rank": None,
+              })
+              roster_by_team[team_id].append(athlete)
+              if row["captain"].strip().upper() == "TRUE":
+                  teams[team_id]["captain"] = athlete
+                  captains[team_id] = athlete
+
+          swaps_by_team = defaultdict(list)
+          for row in tables["Swaps"]:
+              if not row.get("team_id"):
+                  continue
+              team_id = row["team_id"].strip()
+              wod = int(row["wod"])
+              swapped_out = row["swapped_out"].strip()
+              if swapped_out == captains.get(team_id):
+                  raise ValueError(f"Captain cannot be swapped out: {team_id} {swapped_out}")
+              swap = {
+                  "wod": wod,
+                  "swapped_out": swapped_out,
+                  "swapped_in": row["swapped_in"].strip(),
+                  "swapped_in_from_team": "External Roster",
+              }
+              swaps_by_team[team_id].append(swap)
+              teams[team_id]["swaps"].append(swap)
+
+          for team_id, team in teams.items():
+              current = list(roster_by_team[team_id])
+              for wod in range(1, 5):
+                  for swap in sorted(swaps_by_team[team_id], key=lambda item: item["wod"]):
+                      if swap["wod"] == wod:
+                          current = [athlete for athlete in current if athlete != swap["swapped_out"]]
+                          if swap["swapped_in"] not in current:
+                              current.append(swap["swapped_in"])
+                  if team["captain"] not in current:
+                      raise ValueError(f"Captain missing from roster: {team_id}")
+                  team["roster"][f"wod{wod}"] = list(current)
+
+          wods = []
+          released_wods = []
+          for row in tables["WOD_Info"]:
+              wod_id = int(row["wod_id"])
+              released = row["released"].strip().upper() == "TRUE"
+              if released:
+                  released_wods.append(wod_id)
+              wods.append({
+                  "id": wod_id,
+                  "name": row["name"].strip(),
+                  "release_date": row["release_date"].strip(),
+                  "released": released,
+                  "format": row["format"].strip(),
+                  "description": row["description"].strip(),
+              })
+
+          for wod in range(1, 5):
+              rows = {row["team_id"].strip(): row for row in tables[f"WOD_{wod}"] if row.get("team_id")}
+              for team_id, team in teams.items():
+                  row = rows.get(team_id, {})
+                  score = row.get("score", "").strip() or None
+                  rank = int(row["rank"]) if row.get("rank", "").strip() else None
+                  points = int(row["points"]) if row.get("points", "").strip() else None
+                  team["scores"].append({"wod": wod, "score": score, "rank": rank, "points": points})
+
+          divisions = sorted({team["division"] for team in teams.values()})
+          for team in teams.values():
+              team["total_points"] = sum(
+                  score["points"] for score in team["scores"]
+                  if score["wod"] in released_wods and score["points"] is not None
+              )
+
+          recent_wod = max(released_wods) if released_wods else 0
+          for division in divisions:
+              division_teams = [team for team in teams.values() if team["division"] == division]
+              division_teams.sort(key=lambda team: (
+                  team["total_points"],
+                  next((score["rank"] for score in team["scores"] if score["wod"] == recent_wod), 999),
+                  team["name"],
+              ))
+              for index, team in enumerate(division_teams, start=1):
+                  team["overall_rank"] = index
+
+          output = {
+              "competition": "Chill Out Games 2026",
+              "next_wod_release": next((f"{wod['release_date']}T00:00:00" for wod in wods if not wod["released"]), ""),
+              "divisions": divisions,
+              "wods": sorted(wods, key=lambda wod: wod["id"]),
+              "teams": sorted(teams.values(), key=lambda team: team["id"]),
+          }
+
+          with open("data.json", "w", encoding="utf-8") as file:
+              json.dump(output, file, indent=2)
+              file.write("\n")
+          PY
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet || git commit -m "chore: update leaderboard data [skip ci]"
+          git push
