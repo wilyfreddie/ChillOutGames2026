@@ -231,8 +231,8 @@
       gap: 0.5rem;
       overflow-x: auto;
       padding: 0.75rem 0;
-      background: rgba(13, 13, 13, 0.94);
-      backdrop-filter: blur(12px);
+      background: transparent;
+      border-bottom: 1px solid var(--line);
     }
 
     .tab-btn,
@@ -319,7 +319,7 @@
 
     .podium-card {
       position: relative;
-      min-height: 142px;
+      min-height: 120px;
       display: grid;
       align-content: end;
       gap: 0.35rem;
@@ -346,11 +346,15 @@
     }
 
     .podium-card.first {
-      min-height: 174px;
       border-color: rgba(37, 150, 190, 0.55);
       background:
         linear-gradient(155deg, rgba(37, 150, 190, 0.2), rgba(235, 2, 21, 0.12)),
         #171717;
+    }
+
+    .podium-card.second,
+    .podium-card.third {
+      border-color: rgba(255, 255, 255, 0.08);
     }
 
     .podium-medal {
@@ -557,14 +561,14 @@
     .change-item {
       padding: 0.65rem;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.045);
+      background: rgba(0, 0, 0, 0.22);
       border-radius: 8px;
+      font-size: 0.85rem;
     }
 
     .change-item strong {
-      display: block;
-      margin-bottom: 0.12rem;
       color: var(--orange);
+      margin-right: 0.35rem;
     }
 
     .team-grid {
@@ -880,8 +884,10 @@
       }
 
       .podium-card,
-      .podium-card.first {
-        min-height: 126px;
+      .podium-card.first,
+      .podium-card.second,
+      .podium-card.third {
+        min-height: 110px;
       }
 
       th,
@@ -1015,6 +1021,24 @@
       color: var(--muted);
       font-size: 0.7rem;
       font-weight: 700;
+    }
+
+    @media (min-width: 621px) {
+      .podium-strip {
+        align-items: end;
+      }
+      .podium-card.first {
+        min-height: 230px;
+      }
+      .podium-card.second {
+        min-height: 180px;
+      }
+      .podium-card.third {
+        min-height: 140px;
+      }
+      .podium-card:nth-child(1) { order: 2; }
+      .podium-card:nth-child(2) { order: 1; }
+      .podium-card:nth-child(3) { order: 3; }
     }
   </style>
 </head>
@@ -1201,11 +1225,11 @@
 
     function renderPodium() {
       const teams = teamsForDivision().slice(0, 3);
-      const podiumOrder = [teams[1], teams[0], teams[2]].filter(Boolean);
-      $("#podiumStrip").innerHTML = podiumOrder.map((team) => {
+      $("#podiumStrip").innerHTML = teams.map((team) => {
         const medals = ["🥇", "🥈", "🥉"];
+        const rankClass = team.overall_rank === 1 ? "first" : team.overall_rank === 2 ? "second" : "third";
         return `
-          <article class="podium-card ${team.overall_rank === 1 ? "first" : ""}" data-place="${team.overall_rank}">
+          <article class="podium-card ${rankClass}" data-place="${team.overall_rank}">
             <div class="podium-medal">${medals[team.overall_rank - 1]}</div>
             <div class="podium-name">${escapeHtml(team.name)}</div>
             <div class="podium-points">${team.total_points} pts <span class="muted">after ${latestReleasedWod()?.name || "WOD"}</span></div>
@@ -1330,22 +1354,10 @@
       const gap = leader && chaser ? leader.total_points - chaser.total_points : 0;
       const comeback = [...teams].sort((a, b) => rankChangeValue(b) - rankChangeValue(a))[0];
       const drops = [...teams].sort((a, b) => rankChangeValue(a) - rankChangeValue(b))[0];
-      const latestSwaps = teams
-        .flatMap((team) => team.swaps.map((swap) => ({ ...swap, teamName: team.name })))
-        .filter((swap) => swap.wod === latest.id);
-      const nextSwaps = teams
-        .flatMap((team) => team.swaps.map((swap) => ({ ...swap, teamName: team.name })))
-        .filter((swap) => swap.wod === latest.id + 1);
-      const swapDrama = latestSwaps.length
-        ? latestSwaps.map((swap) => `${swap.swapped_in} joined ${swap.teamName}; ${swap.swapped_out} got benched for WOD ${swap.wod}.`).join(" ")
-        : nextSwaps.length
-          ? `${nextSwaps.length} swap${nextSwaps.length === 1 ? "" : "s"} already logged for locked WOD ${latest.id + 1}. The transfer window is spicy.`
-          : "No new swaps this WOD. Captains are keeping the roster cards close.";
 
       return `
         <div class="change-item"><strong>Closest battle</strong>${escapeHtml(leader?.name || "TBA")} leads ${escapeHtml(chaser?.name || "the field")} by ${gap} pt${gap === 1 ? "" : "s"}.</div>
         <div class="change-item"><strong>Momentum swing</strong>${escapeHtml(comeback?.name || "TBA")} ${escapeHtml(rankChange(comeback).label)} while ${escapeHtml(drops?.name || "TBA")} ${escapeHtml(rankChange(drops).label)}.</div>
-        <div class="change-item"><strong>Swap watch</strong>${escapeHtml(swapDrama)}</div>
       `;
     }
 
