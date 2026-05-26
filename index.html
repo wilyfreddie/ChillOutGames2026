@@ -364,8 +364,11 @@
     .podium-name {
       position: relative;
       z-index: 1;
-      font-weight: 900;
-      font-size: 1.05rem;
+      font-family: "Barlow Condensed", sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .podium-points {
@@ -431,8 +434,11 @@
     }
 
     .team-name {
-      font-size: 1.25rem;
-      font-weight: 900;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .points {
@@ -1258,7 +1264,6 @@
               <div class="rank">${medal}</div>
               <div>
                 <div class="team-name">${escapeHtml(team.name)}${swapAlert}</div>
-                <div class="muted">${escapeHtml(team.division)} Division</div>
                 ${renderMomentum(team)}
               </div>
               <div class="points"><strong>${team.total_points}</strong><span class="muted">points</span></div>
@@ -1386,10 +1391,9 @@
               <button class="team-toggle" type="button" aria-expanded="false">
                 <div class="card-row">
                   <div>
-                    <h3>${escapeHtml(team.name)}</h3>
-                    <span class="muted">Overall rank ${team.overall_rank}</span>
+                    <h3 class="team-name" style="font-size:1.1rem;margin:0">${escapeHtml(team.name)}</h3>
+                    <span class="muted">Rank ${team.overall_rank} · ${team.total_points} pts</span>
                   </div>
-                  <span class="badge">${escapeHtml(team.division)}</span>
                 </div>
                 <ul class="roster">
                   ${currentRoster.map((athlete) => `
@@ -1417,12 +1421,12 @@
     }
 
     function renderSwaps(team) {
-      if (!team.swaps.length) return `<p class="muted">No swaps recorded.</p>`;
+      if (!team.swaps.length) return ``;
       return `
         <div class="swap-list">
           ${team.swaps.map((swap) => `
             <div class="swap-row">
-              <span><span class="strike">${escapeHtml(swap.swapped_out)}</span> → ${escapeHtml(swap.swapped_in)}</span>
+              <span><span class="strike" style="font-size:0.82rem">${escapeHtml(swap.swapped_out)}</span> → <strong>${escapeHtml(swap.swapped_in)}</strong></span>
               <span>
                 <span class="swap-badge out">Swapped Out WOD ${swap.wod}</span>
                 <span class="swap-badge in">Joined WOD ${swap.wod}</span>
