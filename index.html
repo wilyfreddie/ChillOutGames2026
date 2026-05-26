@@ -1090,6 +1090,181 @@
       .podium-card:nth-child(2) { order: 1; }
       .podium-card:nth-child(3) { order: 3; }
     }
+
+    .share-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      background: rgba(0,0,0,0.7);
+      place-items: center;
+      padding: 1rem;
+    }
+    .share-overlay.open { display: grid; }
+    .share-modal {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 460px;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+    .share-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      border: 0;
+      background: rgba(255,255,255,0.08);
+      color: var(--muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+    .share-close:hover { background: rgba(255,255,255,0.15); color: var(--text); }
+    .share-card {
+      display: grid;
+      gap: 0.35rem;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border-radius: 10px;
+      background: linear-gradient(160deg, #1f0000, #0d0d0d 80%);
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .share-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(235,2,21,0.12), transparent 40%),
+        radial-gradient(circle at 80% 10%, rgba(37,150,190,0.1), transparent 40%);
+      pointer-events: none;
+    }
+    .share-medal { font-size: 3rem; position: relative; z-index: 1; }
+    .share-team-name {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      margin-top: 0.15rem;
+      position: relative;
+      z-index: 1;
+    }
+    .share-rank {
+      font-size: 0.9rem;
+      color: var(--lime);
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    .share-roster {
+      margin: 0.85rem 0 0.75rem;
+      display: grid;
+      gap: 0.2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .share-athlete { font-weight: 600; font-size: 1rem; }
+    .share-scores {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .share-score {
+      flex: 1;
+      max-width: 110px;
+      padding: 0.5rem 0.35rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(0,0,0,0.25);
+    }
+    .sh-score-val {
+      display: block;
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--lime);
+    }
+    .sh-score-wod {
+      display: block;
+      font-size: 0.64rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .sh-score-pts {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--orange);
+    }
+    .share-footer {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    .share-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .share-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      min-height: 44px;
+      padding: 0 1rem;
+      border: 1px solid var(--line);
+      background: #171717;
+      color: var(--text);
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 180ms, background 180ms;
+    }
+    .share-btn:hover {
+      border-color: var(--lime);
+      background: rgba(37,150,190,0.1);
+    }
+    .share-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.72rem;
+      cursor: pointer;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      transition: color 180ms, border-color 180ms, background 180ms;
+    }
+    .share-trigger:hover {
+      color: var(--lime);
+      border-color: rgba(37,150,190,0.4);
+      background: rgba(37,150,190,0.08);
+    }
   </style>
 </head>
 <body>
@@ -1312,6 +1487,9 @@
               <div class="points"><strong>${team.total_points}</strong><span class="muted">points</span></div>
               <span class="rank-change ${change.className}" title="Rank change versus previous WOD">${change.label}</span>
             </div>
+            <div style="display:flex;justify-content:flex-end;margin-top:0.2rem">
+              <button class="share-trigger" data-team-id="${escapeHtml(team.id)}">↥ Share</button>
+            </div>
             <div class="wod-points">
               ${state.data.wods.map((wod) => renderWodPoint(team, wod)).join("")}
             </div>
@@ -1437,6 +1615,7 @@
                     <h3 class="team-name" style="font-size:1.1rem;margin:0">${escapeHtml(team.name)}</h3>
                     <span class="muted">Rank ${team.overall_rank} · ${team.total_points} pts</span>
                   </div>
+                  <button class="share-trigger" data-team-id="${escapeHtml(team.id)}">↥ Share</button>
                 </div>
                 <ul class="roster">
                   ${currentRoster.map((athlete) => `
@@ -1777,9 +1956,107 @@
       `;
     }
 
+    document.addEventListener("click", (e) => {
+      const trigger = e.target.closest(".share-trigger");
+      if (trigger && trigger.dataset.teamId) { showShareCard(trigger.dataset.teamId); return; }
+      if (e.target.closest("#shareClose") || e.target === $("#shareOverlay")) {
+        $("#shareOverlay").classList.remove("open");
+      }
+    });
+
+    function showShareCard(teamId) {
+      const team = state.data.teams.find((t) => t.id === teamId);
+      if (!team) return;
+      const medals = ["🥇", "🥈", "🥉"];
+      const medal = medals[team.overall_rank - 1] || team.overall_rank;
+      const currentRoster = team.roster.wod4 || team.roster.wod3 || team.roster.wod1;
+      const released = state.data.wods.filter((w) => w.released);
+      const scoreCards = released.map((wod) => {
+        const score = scoreFor(team, wod.id);
+        return score ? `
+          <div class="share-score">
+            <span class="sh-score-val">${escapeHtml(score.score || "—")}</span>
+            <span class="sh-score-wod">${escapeHtml(wod.name)}</span>
+            <span class="sh-score-pts">${score.points ?? "—"} pt${score.points !== 1 ? "s" : ""}</span>
+          </div>
+        ` : "";
+      }).join("");
+      const rosterHtml = currentRoster.map((name) =>
+        `<div class="share-athlete">${escapeHtml(name)}${name === team.captain ? " 👑" : ""}</div>`
+      ).join("");
+      $("#sharePreview").innerHTML = `
+        <div class="share-card" id="shareCard">
+          <div class="share-medal">${medal}</div>
+          <div class="share-team-name">${escapeHtml(team.name)}</div>
+          <div class="share-rank">Rank #${team.overall_rank} · ${team.total_points} pts</div>
+          <div class="share-roster">${rosterHtml}</div>
+          <div class="share-scores">${scoreCards}</div>
+          <div class="share-footer">Chill Out Games 2026</div>
+        </div>
+      `;
+      $("#shareOverlay").classList.add("open");
+      let canvas = null;
+      const doCapture = () => {
+        if (canvas) return Promise.resolve(canvas);
+        return new Promise((resolve, reject) => {
+          const cap = () => html2canvas($("#shareCard"), { scale: 2, backgroundColor: null, useCORS: true })
+            .then((c) => { canvas = c; resolve(c); }).catch(reject);
+          if (typeof html2canvas === "undefined") {
+            const s = document.createElement("script");
+            s.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+            s.onload = cap;
+            s.onerror = reject;
+            document.head.appendChild(s);
+          } else cap();
+        });
+      };
+      $("#shareBtn").onclick = () => {
+        doCapture().then((c) => {
+          c.toBlob((blob) => {
+            const file = new File([blob], `${team.name.replace(/\s+/g, "-").toLowerCase()}.png`, { type: "image/png" });
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+              navigator.share({
+                files: [file],
+                title: "Chill Out Games 2026",
+                text: `${medal} ${team.name} — #${team.overall_rank} with ${team.total_points} pts!`
+              });
+            } else {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = `${team.name.replace(/\s+/g, "-").toLowerCase()}.png`;
+              a.click();
+              URL.revokeObjectURL(url);
+            }
+          });
+        }).catch(() => alert("Could not generate image. Download instead."));
+      };
+      $("#downloadBtn").onclick = () => {
+        doCapture().then((c) => {
+          c.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `${team.name.replace(/\s+/g, "-").toLowerCase()}.png`;
+            a.click();
+            URL.revokeObjectURL(url);
+          });
+        });
+      };
+    }
+
     loadData().catch((error) => {
       document.body.innerHTML = `<main class="app"><div class="empty">Leaderboard data failed to load: ${escapeHtml(error.message)}</div></main>`;
     });
   </script>
-</body>
+  <div class="share-overlay" id="shareOverlay">
+    <div class="share-modal">
+      <button class="share-close" id="shareClose">✕</button>
+      <div id="sharePreview"></div>
+      <div class="share-actions">
+        <button class="share-btn" id="shareBtn">📤 Share</button>
+        <button class="share-btn" id="downloadBtn">💾 Save</button>
+      </div>
+    </div>
+  </div>
 </html>
