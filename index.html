@@ -1265,6 +1265,13 @@
       border-color: rgba(37,150,190,0.4);
       background: rgba(37,150,190,0.08);
     }
+
+    .share-card.swap-share-card {
+      background: linear-gradient(160deg, #1a0808, #0d0d0d 80%);
+    }
+    .share-card.swap-share-card::before {
+      background: radial-gradient(circle at 50% 20%, rgba(235,2,21,0.15), transparent 40%);
+    }
   </style>
 </head>
 <body>
@@ -1652,6 +1659,7 @@
               <span><span class="strike" style="font-size:0.78rem">${escapeHtml(swap.swapped_out)}</span> <span class="muted" style="font-size:0.68rem">→</span> <strong style="font-size:0.85rem">${escapeHtml(swap.swapped_in)}</strong></span>
               <span>
                 <span class="swap-badge">WOD ${swap.wod}</span>
+                <button class="swap-share-trigger" data-team-id="${escapeHtml(team.id)}" data-out="${escapeHtml(swap.swapped_out)}" data-in="${escapeHtml(swap.swapped_in)}" data-wod="${swap.wod}" title="Share swap story" style="background:none;border:0;color:var(--muted);cursor:pointer;font-size:0.7rem;padding:0.1rem 0.2rem">↥</button>
               </span>
             </div>
           `).join("")}
@@ -1742,7 +1750,7 @@
           </td>
           <td>${escapeHtml(athlete.currentTeam)}</td>
           <td>${athlete.scores.map(escapeHtml).join("<br>")}</td>
-          <td class="muted" style="font-size:0.82rem">${athlete.swapLines.length ? athlete.swapLines.map(escapeHtml).join("<br>") : "—"}</td>
+          <td class="muted" style="font-size:0.82rem">${athlete.swapLines.length ? athlete.swapLines.map(escapeHtml).join("<br>") : "—"}${athlete.swappedOut ? `<br><button class="swap-share-trigger" data-athlete="${escapeHtml(athlete.name)}" style="margin-top:0.25rem;background:none;border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:0.65rem;cursor:pointer;padding:0.08rem 0.4rem;border-radius:4px">↥ Swap story</button>` : ""}</td>
         </tr>
       `).join("") || `<tr><td colspan="4">No athletes found.</td></tr>`;
     }
@@ -1959,10 +1967,64 @@
     document.addEventListener("click", (e) => {
       const trigger = e.target.closest(".share-trigger");
       if (trigger && trigger.dataset.teamId) { showShareCard(trigger.dataset.teamId); return; }
+      const swapTrigger = e.target.closest(".swap-share-trigger");
+      if (swapTrigger) {
+        if (swapTrigger.dataset.out) {
+          showSwapCard(swapTrigger.dataset.teamId, swapTrigger.dataset.out, swapTrigger.dataset.in, Number(swapTrigger.dataset.wod));
+        } else if (swapTrigger.dataset.athlete) {
+          showSwapCardForAthlete(swapTrigger.dataset.athlete);
+        }
+        return;
+      }
       if (e.target.closest("#shareClose") || e.target === $("#shareOverlay")) {
         $("#shareOverlay").classList.remove("open");
       }
     });
+
+    function openShareModal(html, filename) {
+      $("#sharePreview").innerHTML = html;
+      $("#shareOverlay").classList.add("open");
+      let canvas = null;
+      const doCapture = () => {
+        if (canvas) return Promise.resolve(canvas);
+        return new Promise((resolve, reject) => {
+          const cap = () => html2canvas($("#shareCard"), { scale: 2, backgroundColor: null, useCORS: true })
+            .then((c) => { canvas = c; resolve(c); }).catch(reject);
+          if (typeof html2canvas === "undefined") {
+            const s = document.createElement("script");
+            s.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+            s.onload = cap;
+            s.onerror = reject;
+            document.head.appendChild(s);
+          } else cap();
+        });
+      };
+      $("#shareBtn").onclick = () => {
+        doCapture().then((c) => {
+          c.toBlob((blob) => {
+            const file = new File([blob], filename, { type: "image/png" });
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+              navigator.share({ files: [file], title: "Chill Out Games 2026" });
+            } else {
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = url; a.download = filename; a.click();
+              URL.revokeObjectURL(url);
+            }
+          });
+        }).catch(() => alert("Could not generate image. Download instead."));
+      };
+      $("#downloadBtn").onclick = () => {
+        doCapture().then((c) => {
+          c.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url; a.download = filename; a.click();
+            URL.revokeObjectURL(url);
+          });
+        });
+      };
+    }
 
     function showShareCard(teamId) {
       const team = state.data.teams.find((t) => t.id === teamId);
@@ -1984,7 +2046,7 @@
       const rosterHtml = currentRoster.map((name) =>
         `<div class="share-athlete">${escapeHtml(name)}${name === team.captain ? " 👑" : ""}</div>`
       ).join("");
-      $("#sharePreview").innerHTML = `
+      openShareModal(`
         <div class="share-card" id="shareCard">
           <div class="share-medal">${medal}</div>
           <div class="share-team-name">${escapeHtml(team.name)}</div>
@@ -1993,56 +2055,38 @@
           <div class="share-scores">${scoreCards}</div>
           <div class="share-footer">Chill Out Games 2026</div>
         </div>
-      `;
-      $("#shareOverlay").classList.add("open");
-      let canvas = null;
-      const doCapture = () => {
-        if (canvas) return Promise.resolve(canvas);
-        return new Promise((resolve, reject) => {
-          const cap = () => html2canvas($("#shareCard"), { scale: 2, backgroundColor: null, useCORS: true })
-            .then((c) => { canvas = c; resolve(c); }).catch(reject);
-          if (typeof html2canvas === "undefined") {
-            const s = document.createElement("script");
-            s.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
-            s.onload = cap;
-            s.onerror = reject;
-            document.head.appendChild(s);
-          } else cap();
-        });
-      };
-      $("#shareBtn").onclick = () => {
-        doCapture().then((c) => {
-          c.toBlob((blob) => {
-            const file = new File([blob], `${team.name.replace(/\s+/g, "-").toLowerCase()}.png`, { type: "image/png" });
-            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-              navigator.share({
-                files: [file],
-                title: "Chill Out Games 2026",
-                text: `${medal} ${team.name} — #${team.overall_rank} with ${team.total_points} pts!`
-              });
-            } else {
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              a.href = url;
-              a.download = `${team.name.replace(/\s+/g, "-").toLowerCase()}.png`;
-              a.click();
-              URL.revokeObjectURL(url);
-            }
-          });
-        }).catch(() => alert("Could not generate image. Download instead."));
-      };
-      $("#downloadBtn").onclick = () => {
-        doCapture().then((c) => {
-          c.toBlob((blob) => {
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = `${team.name.replace(/\s+/g, "-").toLowerCase()}.png`;
-            a.click();
-            URL.revokeObjectURL(url);
-          });
-        });
-      };
+      `, `${team.name.replace(/\s+/g, "-").toLowerCase()}.png`);
+    }
+
+    function showSwapCard(teamId, swappedOut, swappedIn, wod) {
+      const team = state.data.teams.find((t) => t.id === teamId);
+      if (!team) return;
+      openShareModal(`
+        <div class="share-card swap-share-card" id="shareCard">
+          <div style="font-size:2.5rem;position:relative;z-index:1;margin-bottom:0.25rem">🔄</div>
+          <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--orange);font-weight:800;position:relative;z-index:1">TRADE ALERT</div>
+          <div class="share-team-name" style="font-size:2.2rem;margin-top:0.5rem">${escapeHtml(swappedOut)}</div>
+          <div style="position:relative;z-index:1;color:var(--muted);font-weight:600;margin:0.3rem 0 0.5rem">
+            was benched by captain<br>
+            <strong style="color:var(--text)">${escapeHtml(team.captain)} 👑</strong>
+          </div>
+          <div class="share-scores" style="flex-direction:column;align-items:center;gap:0.3rem">
+            <div style="font-size:0.9rem;font-weight:700">→ ${escapeHtml(swappedIn)} steps in</div>
+            <div class="sh-score-wod" style="font-size:0.75rem">WOD ${wod} · ${escapeHtml(team.name)}</div>
+          </div>
+          <div class="share-footer" style="margin-top:1.2rem">Chill Out Games 2026</div>
+        </div>
+      `, `swapped-${swappedOut.replace(/\s+/g, "-").toLowerCase()}.png`);
+    }
+
+    function showSwapCardForAthlete(athleteName) {
+      for (const team of state.data.teams) {
+        const swap = team.swaps.find((s) => s.swapped_out === athleteName);
+        if (swap) {
+          showSwapCard(team.id, swap.swapped_out, swap.swapped_in, swap.wod);
+          return;
+        }
+      }
     }
 
     loadData().catch((error) => {
