@@ -725,9 +725,23 @@
     }
 
     .team-card .swap-badge {
-      min-height: 20px;
-      padding: 0 0.35rem;
-      font-size: 0.64rem;
+      min-height: 18px;
+      padding: 0 0.3rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .swap-history-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.25);
+      margin-top: 0.3rem;
+      margin-bottom: 0.15rem;
     }
 
     .team-card .swap-list + .team-details {
@@ -841,6 +855,16 @@
     .athlete-panel {
       overflow: hidden;
     }
+
+    .athlete-panel table {
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .athlete-panel th:nth-child(1) { width: 26%; }
+    .athlete-panel th:nth-child(2) { width: 16%; }
+    .athlete-panel th:nth-child(3) { width: 38%; }
+    .athlete-panel th:nth-child(4) { width: 20%; }
 
     .athlete-name {
       font-weight: 900;
@@ -1442,13 +1466,13 @@
     function renderSwaps(team) {
       if (!team.swaps.length) return ``;
       return `
+        <div class="swap-history-label">Roster changes</div>
         <div class="swap-list">
           ${team.swaps.map((swap) => `
             <div class="swap-row">
-              <span><span class="strike" style="font-size:0.82rem">${escapeHtml(swap.swapped_out)}</span> → <strong>${escapeHtml(swap.swapped_in)}</strong></span>
+              <span><span class="strike" style="font-size:0.78rem">${escapeHtml(swap.swapped_out)}</span> <span class="muted" style="font-size:0.68rem">→</span> <strong style="font-size:0.85rem">${escapeHtml(swap.swapped_in)}</strong></span>
               <span>
-                <span class="swap-badge out">Swapped Out WOD ${swap.wod}</span>
-                <span class="swap-badge in">Joined WOD ${swap.wod}</span>
+                <span class="swap-badge">WOD ${swap.wod}</span>
               </span>
             </div>
           `).join("")}
@@ -1489,7 +1513,6 @@
             return `
               <tr>
                 <td>${escapeHtml(team.name)}</td>
-                <td>${escapeHtml(team.division)}</td>
                 <td>${score?.score ? escapeHtml(score.score) : "TBA"}</td>
                 <td>${score?.points ?? "Locked"}</td>
               </tr>
@@ -1507,7 +1530,7 @@
               <p>${escapeHtml(wod.description)}</p>
               <div class="table-wrap">
                 <table>
-                  <thead><tr><th>Team</th><th>Div</th><th>Score</th><th>Pts</th></tr></thead>
+                  <thead><tr><th>Team</th><th>Score</th><th>Pts</th></tr></thead>
                   <tbody>${rows}</tbody>
                 </table>
               </div>
