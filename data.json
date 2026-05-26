@@ -1,36 +1,35 @@
 {
   "competition": "Chill Out Games 2026",
-  "next_wod_release": "2026-07-10T00:00:00",
-  "divisions": ["RX", "Scaled"],
+  "next_wod_release": "2026-07-03T00:00:00",
   "wods": [
     {
       "id": 1,
       "name": "WOD 1",
-      "release_date": "2026-06-19",
-      "released": true,
+      "release_date": "2026-07-03",
+      "released": false,
       "format": "For Time",
       "description": "21-15-9 thrusters and pull-ups"
     },
     {
       "id": 2,
       "name": "WOD 2",
-      "release_date": "2026-06-26",
-      "released": true,
+      "release_date": "2026-07-10",
+      "released": false,
       "format": "AMRAP",
       "description": "12 minutes: calories, box jumps, and synchronized burpees"
     },
     {
       "id": 3,
       "name": "WOD 3",
-      "release_date": "2026-07-03",
-      "released": true,
+      "release_date": "2026-07-17",
+      "released": false,
       "format": "Max Load",
       "description": "7-minute team complex: clean + hang clean + front squat"
     },
     {
       "id": 4,
       "name": "WOD 4",
-      "release_date": "2026-07-10",
+      "release_date": "2026-07-24",
       "released": false,
       "format": "TBA",
       "description": "TBA"
@@ -40,13 +39,29 @@
     {
       "id": "team_001",
       "name": "Tinikling Titans",
-      "division": "RX",
+      "division": "Chill Out",
       "captain": "Miguel Santos",
       "roster": {
-        "wod1": ["Miguel Santos", "Paolo Reyes", "Bianca Cruz"],
-        "wod2": ["Miguel Santos", "Paolo Reyes", "Bianca Cruz"],
-        "wod3": ["Miguel Santos", "Paolo Reyes", "Jessa Lim"],
-        "wod4": ["Miguel Santos", "Paolo Reyes", "Jessa Lim"]
+        "wod1": [
+          "Miguel Santos",
+          "Paolo Reyes",
+          "Bianca Cruz"
+        ],
+        "wod2": [
+          "Miguel Santos",
+          "Paolo Reyes",
+          "Bianca Cruz"
+        ],
+        "wod3": [
+          "Miguel Santos",
+          "Paolo Reyes",
+          "Jessa Lim"
+        ],
+        "wod4": [
+          "Miguel Santos",
+          "Paolo Reyes",
+          "Jessa Lim"
+        ]
       },
       "swaps": [
         {
@@ -57,10 +72,30 @@
         }
       ],
       "scores": [
-        { "wod": 1, "score": "12:58", "rank": 2, "points": 2 },
-        { "wod": 2, "score": "163 reps", "rank": 1, "points": 1 },
-        { "wod": 3, "score": "565 lb", "rank": 2, "points": 2 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "12:58",
+          "rank": 2,
+          "points": 2
+        },
+        {
+          "wod": 2,
+          "score": "163 reps",
+          "rank": 1,
+          "points": 1
+        },
+        {
+          "wod": 3,
+          "score": "565 lb",
+          "rank": 2,
+          "points": 2
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 5,
       "overall_rank": 1
@@ -68,20 +103,56 @@
     {
       "id": "team_002",
       "name": "Adobo Barbell Club",
-      "division": "RX",
+      "division": "Chill Out",
       "captain": "Carlo Dela Cruz",
       "roster": {
-        "wod1": ["Carlo Dela Cruz", "Mara Aquino", "Jolo Garcia"],
-        "wod2": ["Carlo Dela Cruz", "Mara Aquino", "Jolo Garcia"],
-        "wod3": ["Carlo Dela Cruz", "Mara Aquino", "Jolo Garcia"],
-        "wod4": ["Carlo Dela Cruz", "Mara Aquino", "Jolo Garcia"]
+        "wod1": [
+          "Carlo Dela Cruz",
+          "Mara Aquino",
+          "Jolo Garcia"
+        ],
+        "wod2": [
+          "Carlo Dela Cruz",
+          "Mara Aquino",
+          "Jolo Garcia"
+        ],
+        "wod3": [
+          "Carlo Dela Cruz",
+          "Mara Aquino",
+          "Jolo Garcia"
+        ],
+        "wod4": [
+          "Carlo Dela Cruz",
+          "Mara Aquino",
+          "Jolo Garcia"
+        ]
       },
       "swaps": [],
       "scores": [
-        { "wod": 1, "score": "13:21", "rank": 3, "points": 3 },
-        { "wod": 2, "score": "154 reps", "rank": 3, "points": 3 },
-        { "wod": 3, "score": "575 lb", "rank": 1, "points": 1 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "13:21",
+          "rank": 3,
+          "points": 3
+        },
+        {
+          "wod": 2,
+          "score": "154 reps",
+          "rank": 3,
+          "points": 3
+        },
+        {
+          "wod": 3,
+          "score": "575 lb",
+          "rank": 1,
+          "points": 1
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 7,
       "overall_rank": 2
@@ -89,13 +160,29 @@
     {
       "id": "team_003",
       "name": "Mabuhay Metcon",
-      "division": "RX",
+      "division": "Chill Out",
       "captain": "Nico Villanueva",
       "roster": {
-        "wod1": ["Nico Villanueva", "Rafa Mendoza", "Sofia Navarro"],
-        "wod2": ["Nico Villanueva", "Rafa Mendoza", "Sofia Navarro"],
-        "wod3": ["Nico Villanueva", "Rafa Mendoza", "Lia Bautista"],
-        "wod4": ["Nico Villanueva", "Enzo Ramos", "Lia Bautista"]
+        "wod1": [
+          "Nico Villanueva",
+          "Rafa Mendoza",
+          "Sofia Navarro"
+        ],
+        "wod2": [
+          "Nico Villanueva",
+          "Rafa Mendoza",
+          "Sofia Navarro"
+        ],
+        "wod3": [
+          "Nico Villanueva",
+          "Rafa Mendoza",
+          "Lia Bautista"
+        ],
+        "wod4": [
+          "Nico Villanueva",
+          "Enzo Ramos",
+          "Lia Bautista"
+        ]
       },
       "swaps": [
         {
@@ -112,10 +199,30 @@
         }
       ],
       "scores": [
-        { "wod": 1, "score": "14:02", "rank": 5, "points": 5 },
-        { "wod": 2, "score": "160 reps", "rank": 2, "points": 2 },
-        { "wod": 3, "score": "550 lb", "rank": 3, "points": 3 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "14:02",
+          "rank": 5,
+          "points": 5
+        },
+        {
+          "wod": 2,
+          "score": "160 reps",
+          "rank": 2,
+          "points": 2
+        },
+        {
+          "wod": 3,
+          "score": "550 lb",
+          "rank": 3,
+          "points": 3
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 10,
       "overall_rank": 3
@@ -123,20 +230,56 @@
     {
       "id": "team_004",
       "name": "Mayon Muscle",
-      "division": "RX",
+      "division": "Chill Out",
       "captain": "Andre Torres",
       "roster": {
-        "wod1": ["Andre Torres", "Kyla Mariano", "Gab Lim"],
-        "wod2": ["Andre Torres", "Kyla Mariano", "Gab Lim"],
-        "wod3": ["Andre Torres", "Kyla Mariano", "Gab Lim"],
-        "wod4": ["Andre Torres", "Kyla Mariano", "Gab Lim"]
+        "wod1": [
+          "Andre Torres",
+          "Kyla Mariano",
+          "Gab Lim"
+        ],
+        "wod2": [
+          "Andre Torres",
+          "Kyla Mariano",
+          "Gab Lim"
+        ],
+        "wod3": [
+          "Andre Torres",
+          "Kyla Mariano",
+          "Gab Lim"
+        ],
+        "wod4": [
+          "Andre Torres",
+          "Kyla Mariano",
+          "Gab Lim"
+        ]
       },
       "swaps": [],
       "scores": [
-        { "wod": 1, "score": "12:44", "rank": 1, "points": 1 },
-        { "wod": 2, "score": "148 reps", "rank": 5, "points": 5 },
-        { "wod": 3, "score": "520 lb", "rank": 5, "points": 5 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "12:44",
+          "rank": 1,
+          "points": 1
+        },
+        {
+          "wod": 2,
+          "score": "148 reps",
+          "rank": 5,
+          "points": 5
+        },
+        {
+          "wod": 3,
+          "score": "520 lb",
+          "rank": 5,
+          "points": 5
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 11,
       "overall_rank": 4
@@ -144,13 +287,29 @@
     {
       "id": "team_005",
       "name": "Sinag Squad",
-      "division": "RX",
+      "division": "Chill Out",
       "captain": "Luis Manalo",
       "roster": {
-        "wod1": ["Luis Manalo", "Jessa Lim", "Anton De Leon"],
-        "wod2": ["Luis Manalo", "Jessa Lim", "Anton De Leon"],
-        "wod3": ["Luis Manalo", "Anton De Leon", "Clara Tan"],
-        "wod4": ["Luis Manalo", "Anton De Leon", "Clara Tan"]
+        "wod1": [
+          "Luis Manalo",
+          "Jessa Lim",
+          "Anton De Leon"
+        ],
+        "wod2": [
+          "Luis Manalo",
+          "Jessa Lim",
+          "Anton De Leon"
+        ],
+        "wod3": [
+          "Luis Manalo",
+          "Anton De Leon",
+          "Clara Tan"
+        ],
+        "wod4": [
+          "Luis Manalo",
+          "Anton De Leon",
+          "Clara Tan"
+        ]
       },
       "swaps": [
         {
@@ -161,10 +320,30 @@
         }
       ],
       "scores": [
-        { "wod": 1, "score": "13:54", "rank": 4, "points": 4 },
-        { "wod": 2, "score": "151 reps", "rank": 4, "points": 4 },
-        { "wod": 3, "score": "535 lb", "rank": 4, "points": 4 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "13:54",
+          "rank": 4,
+          "points": 4
+        },
+        {
+          "wod": 2,
+          "score": "151 reps",
+          "rank": 4,
+          "points": 4
+        },
+        {
+          "wod": 3,
+          "score": "535 lb",
+          "rank": 4,
+          "points": 4
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 12,
       "overall_rank": 5
@@ -172,20 +351,56 @@
     {
       "id": "team_006",
       "name": "Jeepney Jerks",
-      "division": "RX",
+      "division": "Chill Out",
       "captain": "Sam Bautista",
       "roster": {
-        "wod1": ["Sam Bautista", "Iya Mercado", "Diego Flores"],
-        "wod2": ["Sam Bautista", "Iya Mercado", "Diego Flores"],
-        "wod3": ["Sam Bautista", "Iya Mercado", "Diego Flores"],
-        "wod4": ["Sam Bautista", "Iya Mercado", "Diego Flores"]
+        "wod1": [
+          "Sam Bautista",
+          "Iya Mercado",
+          "Diego Flores"
+        ],
+        "wod2": [
+          "Sam Bautista",
+          "Iya Mercado",
+          "Diego Flores"
+        ],
+        "wod3": [
+          "Sam Bautista",
+          "Iya Mercado",
+          "Diego Flores"
+        ],
+        "wod4": [
+          "Sam Bautista",
+          "Iya Mercado",
+          "Diego Flores"
+        ]
       },
       "swaps": [],
       "scores": [
-        { "wod": 1, "score": "14:35", "rank": 6, "points": 6 },
-        { "wod": 2, "score": "139 reps", "rank": 7, "points": 7 },
-        { "wod": 3, "score": "510 lb", "rank": 6, "points": 6 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "14:35",
+          "rank": 6,
+          "points": 6
+        },
+        {
+          "wod": 2,
+          "score": "139 reps",
+          "rank": 7,
+          "points": 7
+        },
+        {
+          "wod": 3,
+          "score": "510 lb",
+          "rank": 6,
+          "points": 6
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 19,
       "overall_rank": 6
@@ -193,20 +408,56 @@
     {
       "id": "team_007",
       "name": "Barangay Burpees",
-      "division": "RX",
+      "division": "Chill Out",
       "captain": "Tomas Sy",
       "roster": {
-        "wod1": ["Tomas Sy", "Reina Castillo", "Marco Padilla"],
-        "wod2": ["Tomas Sy", "Reina Castillo", "Marco Padilla"],
-        "wod3": ["Tomas Sy", "Reina Castillo", "Marco Padilla"],
-        "wod4": ["Tomas Sy", "Reina Castillo", "Marco Padilla"]
+        "wod1": [
+          "Tomas Sy",
+          "Reina Castillo",
+          "Marco Padilla"
+        ],
+        "wod2": [
+          "Tomas Sy",
+          "Reina Castillo",
+          "Marco Padilla"
+        ],
+        "wod3": [
+          "Tomas Sy",
+          "Reina Castillo",
+          "Marco Padilla"
+        ],
+        "wod4": [
+          "Tomas Sy",
+          "Reina Castillo",
+          "Marco Padilla"
+        ]
       },
       "swaps": [],
       "scores": [
-        { "wod": 1, "score": "15:02", "rank": 7, "points": 7 },
-        { "wod": 2, "score": "144 reps", "rank": 6, "points": 6 },
-        { "wod": 3, "score": "495 lb", "rank": 7, "points": 7 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "15:02",
+          "rank": 7,
+          "points": 7
+        },
+        {
+          "wod": 2,
+          "score": "144 reps",
+          "rank": 6,
+          "points": 6
+        },
+        {
+          "wod": 3,
+          "score": "495 lb",
+          "rank": 7,
+          "points": 7
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 20,
       "overall_rank": 7
@@ -214,20 +465,56 @@
     {
       "id": "team_008",
       "name": "Lakan Lift Crew",
-      "division": "RX",
+      "division": "Chill Out",
       "captain": "Kenji Ramos",
       "roster": {
-        "wod1": ["Kenji Ramos", "Trina Gonzales", "Arman Cruz"],
-        "wod2": ["Kenji Ramos", "Trina Gonzales", "Arman Cruz"],
-        "wod3": ["Kenji Ramos", "Trina Gonzales", "Arman Cruz"],
-        "wod4": ["Kenji Ramos", "Trina Gonzales", "Arman Cruz"]
+        "wod1": [
+          "Kenji Ramos",
+          "Trina Gonzales",
+          "Arman Cruz"
+        ],
+        "wod2": [
+          "Kenji Ramos",
+          "Trina Gonzales",
+          "Arman Cruz"
+        ],
+        "wod3": [
+          "Kenji Ramos",
+          "Trina Gonzales",
+          "Arman Cruz"
+        ],
+        "wod4": [
+          "Kenji Ramos",
+          "Trina Gonzales",
+          "Arman Cruz"
+        ]
       },
       "swaps": [],
       "scores": [
-        { "wod": 1, "score": "15:49", "rank": 8, "points": 8 },
-        { "wod": 2, "score": "132 reps", "rank": 8, "points": 8 },
-        { "wod": 3, "score": "480 lb", "rank": 8, "points": 8 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "15:49",
+          "rank": 8,
+          "points": 8
+        },
+        {
+          "wod": 2,
+          "score": "132 reps",
+          "rank": 8,
+          "points": 8
+        },
+        {
+          "wod": 3,
+          "score": "480 lb",
+          "rank": 8,
+          "points": 8
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 24,
       "overall_rank": 8
@@ -235,13 +522,29 @@
     {
       "id": "team_009",
       "name": "Scaled Silogs",
-      "division": "Scaled",
+      "division": "Chill Out",
       "captain": "Ana Lopez",
       "roster": {
-        "wod1": ["Ana Lopez", "Lia Bautista", "Miko Chan"],
-        "wod2": ["Ana Lopez", "Lia Bautista", "Miko Chan"],
-        "wod3": ["Ana Lopez", "Miko Chan", "Nina Soriano"],
-        "wod4": ["Ana Lopez", "Miko Chan", "Nina Soriano"]
+        "wod1": [
+          "Ana Lopez",
+          "Lia Bautista",
+          "Miko Chan"
+        ],
+        "wod2": [
+          "Ana Lopez",
+          "Lia Bautista",
+          "Miko Chan"
+        ],
+        "wod3": [
+          "Ana Lopez",
+          "Miko Chan",
+          "Nina Soriano"
+        ],
+        "wod4": [
+          "Ana Lopez",
+          "Miko Chan",
+          "Nina Soriano"
+        ]
       },
       "swaps": [
         {
@@ -252,10 +555,30 @@
         }
       ],
       "scores": [
-        { "wod": 1, "score": "11:38", "rank": 1, "points": 1 },
-        { "wod": 2, "score": "126 reps", "rank": 2, "points": 2 },
-        { "wod": 3, "score": "385 lb", "rank": 1, "points": 1 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "11:38",
+          "rank": 1,
+          "points": 1
+        },
+        {
+          "wod": 2,
+          "score": "126 reps",
+          "rank": 2,
+          "points": 2
+        },
+        {
+          "wod": 3,
+          "score": "385 lb",
+          "rank": 1,
+          "points": 1
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 4,
       "overall_rank": 1
@@ -263,13 +586,29 @@
     {
       "id": "team_010",
       "name": "Pandesal Power",
-      "division": "Scaled",
+      "division": "Chill Out",
       "captain": "Josefina Reyes",
       "roster": {
-        "wod1": ["Josefina Reyes", "Nina Soriano", "Bryan Ong"],
-        "wod2": ["Josefina Reyes", "Nina Soriano", "Bryan Ong"],
-        "wod3": ["Josefina Reyes", "Bryan Ong", "Ella Santos"],
-        "wod4": ["Josefina Reyes", "Bryan Ong", "Ella Santos"]
+        "wod1": [
+          "Josefina Reyes",
+          "Nina Soriano",
+          "Bryan Ong"
+        ],
+        "wod2": [
+          "Josefina Reyes",
+          "Nina Soriano",
+          "Bryan Ong"
+        ],
+        "wod3": [
+          "Josefina Reyes",
+          "Bryan Ong",
+          "Ella Santos"
+        ],
+        "wod4": [
+          "Josefina Reyes",
+          "Bryan Ong",
+          "Ella Santos"
+        ]
       },
       "swaps": [
         {
@@ -280,10 +619,30 @@
         }
       ],
       "scores": [
-        { "wod": 1, "score": "12:05", "rank": 2, "points": 2 },
-        { "wod": 2, "score": "130 reps", "rank": 1, "points": 1 },
-        { "wod": 3, "score": "360 lb", "rank": 3, "points": 3 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "12:05",
+          "rank": 2,
+          "points": 2
+        },
+        {
+          "wod": 2,
+          "score": "130 reps",
+          "rank": 1,
+          "points": 1
+        },
+        {
+          "wod": 3,
+          "score": "360 lb",
+          "rank": 3,
+          "points": 3
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 6,
       "overall_rank": 2
@@ -291,13 +650,29 @@
     {
       "id": "team_011",
       "name": "Halo-Halo Hustle",
-      "division": "Scaled",
+      "division": "Chill Out",
       "captain": "Alvin Magtibay",
       "roster": {
-        "wod1": ["Alvin Magtibay", "Ella Santos", "Enzo Ramos"],
-        "wod2": ["Alvin Magtibay", "Ella Santos", "Enzo Ramos"],
-        "wod3": ["Alvin Magtibay", "Enzo Ramos", "Camille Uy"],
-        "wod4": ["Alvin Magtibay", "Camille Uy", "Paula Garcia"]
+        "wod1": [
+          "Alvin Magtibay",
+          "Ella Santos",
+          "Enzo Ramos"
+        ],
+        "wod2": [
+          "Alvin Magtibay",
+          "Ella Santos",
+          "Enzo Ramos"
+        ],
+        "wod3": [
+          "Alvin Magtibay",
+          "Enzo Ramos",
+          "Camille Uy"
+        ],
+        "wod4": [
+          "Alvin Magtibay",
+          "Camille Uy",
+          "Paula Garcia"
+        ]
       },
       "swaps": [
         {
@@ -314,10 +689,30 @@
         }
       ],
       "scores": [
-        { "wod": 1, "score": "13:12", "rank": 4, "points": 4 },
-        { "wod": 2, "score": "121 reps", "rank": 3, "points": 3 },
-        { "wod": 3, "score": "370 lb", "rank": 2, "points": 2 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "13:12",
+          "rank": 4,
+          "points": 4
+        },
+        {
+          "wod": 2,
+          "score": "121 reps",
+          "rank": 3,
+          "points": 3
+        },
+        {
+          "wod": 3,
+          "score": "370 lb",
+          "rank": 2,
+          "points": 2
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 9,
       "overall_rank": 3
@@ -325,13 +720,29 @@
     {
       "id": "team_012",
       "name": "Kanto Conditioning",
-      "division": "Scaled",
+      "division": "Chill Out",
       "captain": "Rhea Francisco",
       "roster": {
-        "wod1": ["Rhea Francisco", "Camille Uy", "Jun Navarro"],
-        "wod2": ["Rhea Francisco", "Camille Uy", "Jun Navarro"],
-        "wod3": ["Rhea Francisco", "Jun Navarro", "Tessa Cruz"],
-        "wod4": ["Rhea Francisco", "Jun Navarro", "Tessa Cruz"]
+        "wod1": [
+          "Rhea Francisco",
+          "Camille Uy",
+          "Jun Navarro"
+        ],
+        "wod2": [
+          "Rhea Francisco",
+          "Camille Uy",
+          "Jun Navarro"
+        ],
+        "wod3": [
+          "Rhea Francisco",
+          "Jun Navarro",
+          "Tessa Cruz"
+        ],
+        "wod4": [
+          "Rhea Francisco",
+          "Jun Navarro",
+          "Tessa Cruz"
+        ]
       },
       "swaps": [
         {
@@ -342,10 +753,30 @@
         }
       ],
       "scores": [
-        { "wod": 1, "score": "12:44", "rank": 3, "points": 3 },
-        { "wod": 2, "score": "116 reps", "rank": 4, "points": 4 },
-        { "wod": 3, "score": "340 lb", "rank": 5, "points": 5 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "12:44",
+          "rank": 3,
+          "points": 3
+        },
+        {
+          "wod": 2,
+          "score": "116 reps",
+          "rank": 4,
+          "points": 4
+        },
+        {
+          "wod": 3,
+          "score": "340 lb",
+          "rank": 5,
+          "points": 5
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 12,
       "overall_rank": 4
@@ -353,13 +784,29 @@
     {
       "id": "team_013",
       "name": "Kapre Kettlebells",
-      "division": "Scaled",
+      "division": "Chill Out",
       "captain": "Dante Morales",
       "roster": {
-        "wod1": ["Dante Morales", "Clara Tan", "Paula Garcia"],
-        "wod2": ["Dante Morales", "Clara Tan", "Paula Garcia"],
-        "wod3": ["Dante Morales", "Paula Garcia", "Benjie Lao"],
-        "wod4": ["Dante Morales", "Benjie Lao", "Grace Villanueva"]
+        "wod1": [
+          "Dante Morales",
+          "Clara Tan",
+          "Paula Garcia"
+        ],
+        "wod2": [
+          "Dante Morales",
+          "Clara Tan",
+          "Paula Garcia"
+        ],
+        "wod3": [
+          "Dante Morales",
+          "Paula Garcia",
+          "Benjie Lao"
+        ],
+        "wod4": [
+          "Dante Morales",
+          "Benjie Lao",
+          "Grace Villanueva"
+        ]
       },
       "swaps": [
         {
@@ -376,10 +823,30 @@
         }
       ],
       "scores": [
-        { "wod": 1, "score": "13:48", "rank": 5, "points": 5 },
-        { "wod": 2, "score": "112 reps", "rank": 5, "points": 5 },
-        { "wod": 3, "score": "350 lb", "rank": 4, "points": 4 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "13:48",
+          "rank": 5,
+          "points": 5
+        },
+        {
+          "wod": 2,
+          "score": "112 reps",
+          "rank": 5,
+          "points": 5
+        },
+        {
+          "wod": 3,
+          "score": "350 lb",
+          "rank": 4,
+          "points": 4
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 14,
       "overall_rank": 5
@@ -387,13 +854,29 @@
     {
       "id": "team_014",
       "name": "Sari-Sari Strong",
-      "division": "Scaled",
+      "division": "Chill Out",
       "captain": "Marites Salcedo",
       "roster": {
-        "wod1": ["Marites Salcedo", "Tessa Cruz", "Benjie Lao"],
-        "wod2": ["Marites Salcedo", "Tessa Cruz", "Benjie Lao"],
-        "wod3": ["Marites Salcedo", "Grace Villanueva", "Ramon Lee"],
-        "wod4": ["Marites Salcedo", "Ramon Lee", "Iris Santiago"]
+        "wod1": [
+          "Marites Salcedo",
+          "Tessa Cruz",
+          "Benjie Lao"
+        ],
+        "wod2": [
+          "Marites Salcedo",
+          "Tessa Cruz",
+          "Benjie Lao"
+        ],
+        "wod3": [
+          "Marites Salcedo",
+          "Grace Villanueva",
+          "Ramon Lee"
+        ],
+        "wod4": [
+          "Marites Salcedo",
+          "Ramon Lee",
+          "Iris Santiago"
+        ]
       },
       "swaps": [
         {
@@ -410,10 +893,30 @@
         }
       ],
       "scores": [
-        { "wod": 1, "score": "14:19", "rank": 6, "points": 6 },
-        { "wod": 2, "score": "104 reps", "rank": 6, "points": 6 },
-        { "wod": 3, "score": "315 lb", "rank": 6, "points": 6 },
-        { "wod": 4, "score": null, "rank": null, "points": null }
+        {
+          "wod": 1,
+          "score": "14:19",
+          "rank": 6,
+          "points": 6
+        },
+        {
+          "wod": 2,
+          "score": "104 reps",
+          "rank": 6,
+          "points": 6
+        },
+        {
+          "wod": 3,
+          "score": "315 lb",
+          "rank": 6,
+          "points": 6
+        },
+        {
+          "wod": 4,
+          "score": null,
+          "rank": null,
+          "points": null
+        }
       ],
       "total_points": 18,
       "overall_rank": 6

@@ -9,14 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0d0d0d;
-      --panel: #151515;
-      --panel-2: #1a1a1a;
+      --bg: #1f0000;
+      --panel: #160303;
+      --panel-2: #240606;
       --line: rgba(255, 255, 255, 0.12);
       --text: #f6f6f6;
       --muted: #a8a8a8;
-      --orange: #ff5722;
-      --lime: #aeea00;
+      --orange: #eb0215;
+      --lime: #2596be;
       --red: #ff4747;
       --green: #31d07b;
       --shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
@@ -45,9 +45,9 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 15% 10%, rgba(255, 87, 34, 0.12), transparent 28rem),
-        radial-gradient(circle at 85% 5%, rgba(174, 234, 0, 0.08), transparent 26rem),
-        linear-gradient(180deg, #111 0%, #0d0d0d 34rem);
+        radial-gradient(circle at 15% 10%, rgba(235, 2, 21, 0.15), transparent 28rem),
+        radial-gradient(circle at 85% 5%, rgba(37, 150, 190, 0.12), transparent 26rem),
+        linear-gradient(180deg, #250303 0%, #1f0000 34rem);
       z-index: -2;
     }
 
@@ -70,7 +70,7 @@
       border-bottom: 1px solid var(--line);
       background:
         linear-gradient(135deg, rgba(13, 13, 13, 0.75), rgba(13, 13, 13, 0.2)),
-        linear-gradient(90deg, rgba(255, 87, 34, 0.18), transparent 42%);
+        linear-gradient(90deg, rgba(235, 2, 21, 0.22), transparent 42%);
     }
 
     .hero::before,
@@ -93,8 +93,8 @@
 
     .hero::after {
       background-image:
-        radial-gradient(circle, rgba(174, 234, 0, 0.8) 0 1px, transparent 2px),
-        radial-gradient(circle, rgba(255, 87, 34, 0.8) 0 1px, transparent 2px);
+        radial-gradient(circle, rgba(37, 150, 190, 0.85) 0 1px, transparent 2px),
+        radial-gradient(circle, rgba(235, 2, 21, 0.85) 0 1px, transparent 2px);
       background-position: 0 0, 22px 18px;
       background-size: 110px 90px, 150px 120px;
       animation: particles 24s linear infinite;
@@ -135,13 +135,13 @@
       display: grid;
       place-items: center;
       border: 2px solid rgba(255, 255, 255, 0.2);
-      background: linear-gradient(145deg, rgba(255, 87, 34, 0.95), rgba(174, 234, 0, 0.78));
-      color: #0d0d0d;
+      background: linear-gradient(145deg, rgba(235, 2, 21, 0.95), rgba(37, 150, 190, 0.86));
+      color: #fff;
       font-family: "Barlow Condensed", sans-serif;
       font-weight: 800;
       font-size: 1.2rem;
       letter-spacing: 0;
-      box-shadow: 0 18px 60px rgba(255, 87, 34, 0.23);
+      box-shadow: 0 18px 60px rgba(235, 2, 21, 0.28);
     }
 
     .event-tag {
@@ -256,7 +256,7 @@
     .division-btn:hover,
     .icon-btn:hover {
       transform: translateY(-1px);
-      border-color: rgba(255, 87, 34, 0.6);
+      border-color: rgba(235, 2, 21, 0.62);
     }
 
     .section {
@@ -301,6 +301,67 @@
       padding: 0 0.9rem;
     }
 
+    .podium-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin: 0 0 1rem;
+    }
+
+    .podium-card {
+      position: relative;
+      min-height: 142px;
+      display: grid;
+      align-content: end;
+      gap: 0.35rem;
+      overflow: hidden;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(155deg, rgba(235, 2, 21, 0.2), rgba(255, 255, 255, 0.04)),
+        #151515;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .podium-card::before {
+      content: attr(data-place);
+      position: absolute;
+      top: -0.5rem;
+      right: 0.7rem;
+      color: rgba(255, 255, 255, 0.08);
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 6.5rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .podium-card.first {
+      min-height: 174px;
+      border-color: rgba(37, 150, 190, 0.55);
+      background:
+        linear-gradient(155deg, rgba(37, 150, 190, 0.2), rgba(235, 2, 21, 0.12)),
+        #171717;
+    }
+
+    .podium-medal {
+      font-size: 1.9rem;
+    }
+
+    .podium-name {
+      position: relative;
+      z-index: 1;
+      font-weight: 900;
+      font-size: 1.05rem;
+    }
+
+    .podium-points {
+      position: relative;
+      z-index: 1;
+      color: var(--lime);
+      font-weight: 900;
+    }
+
     .leaderboard-layout {
       display: grid;
       gap: 1rem;
@@ -329,7 +390,7 @@
     .leader-card:hover,
     .team-card:hover,
     .wod-card:hover {
-      border-color: rgba(255, 87, 34, 0.5);
+      border-color: rgba(235, 2, 21, 0.55);
     }
 
     @keyframes rankPulse {
@@ -394,6 +455,38 @@
       color: var(--red);
     }
 
+    .momentum {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+
+    .momentum-dot {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.055);
+      font-size: 0.72rem;
+      font-weight: 900;
+    }
+
+    .momentum-dot.hot {
+      color: #111;
+      border-color: transparent;
+      background: var(--lime);
+      box-shadow: 0 0 20px rgba(37, 150, 190, 0.3);
+    }
+
+    .momentum-dot.locked {
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.025);
+    }
+
     .wod-points {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -428,8 +521,8 @@
       gap: 0.7rem;
       align-self: start;
       padding: 1rem;
-      border: 1px solid rgba(174, 234, 0, 0.35);
-      background: linear-gradient(160deg, rgba(174, 234, 0, 0.09), rgba(255, 255, 255, 0.035));
+      border: 1px solid rgba(37, 150, 190, 0.45);
+      background: linear-gradient(160deg, rgba(37, 150, 190, 0.12), rgba(255, 255, 255, 0.035));
       border-radius: 8px;
     }
 
@@ -444,6 +537,25 @@
       display: block;
       margin-bottom: 0.1rem;
       color: var(--lime);
+    }
+
+    .change-list {
+      display: grid;
+      gap: 0.55rem;
+      margin-top: 0.4rem;
+    }
+
+    .change-item {
+      padding: 0.65rem;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.045);
+      border-radius: 8px;
+    }
+
+    .change-item strong {
+      display: block;
+      margin-bottom: 0.12rem;
+      color: var(--orange);
     }
 
     .team-grid {
@@ -503,6 +615,45 @@
 
     .badge.scaled {
       background: var(--lime);
+    }
+
+    .athlete-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      margin-top: 0.35rem;
+    }
+
+    .athlete-badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 0 0.42rem;
+      border-radius: 999px;
+      color: #111;
+      background: var(--lime);
+      font-size: 0.66rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .athlete-badge.captain {
+      background: var(--orange);
+    }
+
+    .athlete-badge.joined {
+      background: var(--green);
+    }
+
+    .athlete-badge.swapped {
+      color: #fff;
+      background: var(--red);
+    }
+
+    .athlete-badge.iron {
+      background: #f4f4f4;
     }
 
     .roster,
@@ -645,7 +796,7 @@
 
     .search:focus {
       border-color: var(--orange);
-      box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.18);
+      box-shadow: 0 0 0 3px rgba(235, 2, 21, 0.2);
     }
 
     .athlete-panel {
@@ -715,6 +866,15 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .podium-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .podium-card,
+      .podium-card.first {
+        min-height: 126px;
+      }
+
       th,
       td {
         padding: 0.62rem 0.5rem;
@@ -727,12 +887,12 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="topline">
-        <div class="logo-mark" aria-label="Logo placeholder">COG<br>2026</div>
-        <div class="event-tag">Box Throwdown Leaderboard</div>
+        <div class="logo-mark" aria-label="Chill Out Games logo placeholder">Logo</div>
+        <div class="event-tag">Chill Out Games Leaderboard</div>
       </div>
       <div>
         <h1>Chill Out Games 2026</h1>
-        <p class="hero-copy">Rank-points scoring, team swaps, WOD locks, and weekly Thursday releases in one fast static leaderboard.</p>
+        <p class="hero-copy">Rank-points scoring, team swaps, WOD locks, and weekly Friday releases in one fast static leaderboard.</p>
       </div>
       <div class="countdown" aria-label="Countdown to next WOD release">
         <div class="timer-card"><span class="timer-number" id="days">00</span><span class="timer-label">Days</span></div>
@@ -755,10 +915,10 @@
       <div class="section-head">
         <div>
           <h2>Leaderboard</h2>
-          <p class="muted">Lower points win. Ties use the most recent released WOD rank.</p>
+          <p class="muted">Higher points win. Ties use the most recent released WOD rank.</p>
         </div>
-        <div class="division-toggle" id="divisionToggle" aria-label="Division filter"></div>
       </div>
+      <div class="podium-strip" id="podiumStrip" aria-label="Podium"></div>
       <div class="leaderboard-layout">
         <div class="leaderboard-list" id="leaderboardList"></div>
         <aside class="stats-panel" id="statsPanel" aria-label="Stats panel"></aside>
@@ -793,7 +953,7 @@
         </div>
       </div>
       <div class="athlete-tools">
-        <input class="search" id="athleteSearch" type="search" placeholder="Search athlete, team, or division">
+        <input class="search" id="athleteSearch" type="search" placeholder="Search athlete or team">
       </div>
       <div class="athlete-panel">
         <div class="table-wrap">
@@ -828,7 +988,6 @@
 
     const state = {
       data: null,
-      division: "RX",
       athleteQuery: ""
     };
 
@@ -846,10 +1005,8 @@
 
     function init(data) {
       state.data = normalizeData(data);
-      state.division = state.data.divisions[0] || "RX";
-      $(".hero-copy").textContent = `${state.data.competition} is live with ${state.data.teams.length} teams chasing the lowest score.`;
+      $(".hero-copy").textContent = `${state.data.competition} is live with ${state.data.teams.length} teams chasing the highest score.`;
       setupTabs();
-      renderDivisionToggle();
       renderAll();
       setupSearch();
       startCountdown(state.data.next_wod_release);
@@ -864,19 +1021,16 @@
         return { ...team, scores, total_points: total };
       });
 
-      data.divisions.forEach((division) => {
-        const divisionTeams = teams.filter((team) => team.division === division);
-        divisionTeams.sort((a, b) => compareTeams(a, b, released));
-        divisionTeams.forEach((team, index) => {
-          team.overall_rank = index + 1;
-        });
+      teams.sort((a, b) => compareTeams(a, b, released));
+      teams.forEach((team, index) => {
+        team.overall_rank = index + 1;
       });
 
       return { ...data, teams };
     }
 
     function compareTeams(a, b, releasedWods) {
-      if (a.total_points !== b.total_points) return a.total_points - b.total_points;
+      if (a.total_points !== b.total_points) return b.total_points - a.total_points;
       const mostRecent = [...releasedWods].sort((x, y) => y - x)[0];
       const aRecent = scoreFor(a, mostRecent)?.rank ?? 999;
       const bRecent = scoreFor(b, mostRecent)?.rank ?? 999;
@@ -894,24 +1048,9 @@
       });
     }
 
-    function renderDivisionToggle() {
-      const wrap = $("#divisionToggle");
-      wrap.innerHTML = state.data.divisions.map((division) => `
-        <button class="division-btn ${division === state.division ? "active" : ""}" data-division="${escapeHtml(division)}">
-          ${division === "Scaled" ? "Scaled/Bootcamp" : division}
-        </button>
-      `).join("");
-      $$(".division-btn", wrap).forEach((button) => {
-        button.addEventListener("click", () => {
-          state.division = button.dataset.division;
-          renderDivisionToggle();
-          renderLeaderboard();
-          renderStats();
-        });
-      });
-    }
 
     function renderAll() {
+      renderPodium();
       renderLeaderboard();
       renderStats();
       renderTeams();
@@ -919,10 +1058,24 @@
       renderAthletes();
     }
 
+    function renderPodium() {
+      const teams = teamsForDivision().slice(0, 3);
+      const podiumOrder = [teams[1], teams[0], teams[2]].filter(Boolean);
+      $("#podiumStrip").innerHTML = podiumOrder.map((team) => {
+        const medals = ["🥇", "🥈", "🥉"];
+        return `
+          <article class="podium-card ${team.overall_rank === 1 ? "first" : ""}" data-place="${team.overall_rank}">
+            <div class="podium-medal">${medals[team.overall_rank - 1]}</div>
+            <div class="podium-name">${escapeHtml(team.name)}</div>
+            <div class="podium-points">${team.total_points} pts <span class="muted">after ${latestReleasedWod()?.name || "WOD"}</span></div>
+            ${renderMomentum(team)}
+          </article>
+        `;
+      }).join("");
+    }
+
     function renderLeaderboard() {
-      const teams = state.data.teams
-        .filter((team) => team.division === state.division)
-        .sort((a, b) => a.overall_rank - b.overall_rank);
+      const teams = teamsForDivision();
 
       $("#leaderboardList").innerHTML = teams.map((team) => {
         const medal = ["🥇", "🥈", "🥉"][team.overall_rank - 1] || team.overall_rank;
@@ -934,6 +1087,7 @@
               <div>
                 <div class="team-name">${escapeHtml(team.name)}</div>
                 <div class="muted">${escapeHtml(team.division)} Division</div>
+                ${renderMomentum(team)}
               </div>
               <div class="points"><strong>${team.total_points}</strong><span class="muted">points</span></div>
               <span class="rank-change ${change.className}" title="Rank change versus previous WOD">${change.label}</span>
@@ -959,11 +1113,24 @@
       `;
     }
 
+    function renderMomentum(team) {
+      return `
+        <div class="momentum" title="WOD rank momentum">
+          ${state.data.wods.map((wod) => {
+            const score = scoreFor(team, wod.id);
+            const hot = score?.rank != null && score.rank <= 3;
+            const label = wod.released && score?.rank != null ? score.rank : "🔒";
+            return `<span class="momentum-dot ${hot ? "hot" : ""} ${wod.released ? "" : "locked"}">${label}</span>`;
+          }).join("")}
+        </div>
+      `;
+    }
+
     function rankChange(team) {
       const released = state.data.wods.filter((wod) => wod.released).map((wod) => wod.id);
       if (released.length < 2) return { label: "—", className: "" };
       const previousReleased = released.slice(0, -1);
-      const teams = state.data.teams.filter((item) => item.division === team.division);
+      const teams = state.data.teams;
       const previousRank = teams
         .map((item) => ({
           id: item.id,
@@ -973,7 +1140,7 @@
           recent: scoreFor(item, previousReleased[previousReleased.length - 1])?.rank ?? 999,
           name: item.name
         }))
-        .sort((a, b) => a.total - b.total || a.recent - b.recent || a.name.localeCompare(b.name))
+        .sort((a, b) => b.total - a.total || a.recent - b.recent || a.name.localeCompare(b.name))
         .findIndex((item) => item.id === team.id) + 1;
 
       const diff = previousRank - team.overall_rank;
@@ -983,7 +1150,7 @@
     }
 
     function renderStats() {
-      const teams = state.data.teams.filter((team) => team.division === state.division);
+      const teams = teamsForDivision();
       const releasedWods = state.data.wods.filter((wod) => wod.released);
       const consistent = [...teams].sort((a, b) => variance(a) - variance(b))[0];
       const comeback = [...teams].sort((a, b) => rankChangeValue(b) - rankChangeValue(a))[0];
@@ -999,6 +1166,37 @@
         <div class="stat-item"><b>🔥 Biggest comeback</b>${escapeHtml(comeback?.name || "TBA")} <span class="muted">${rankChange(comeback).label}</span></div>
         <div class="stat-item"><b>⚡ Most swaps made</b>${escapeHtml(swappy?.name || "TBA")} <span class="muted">${swappy?.swaps.length || 0} swaps</span></div>
         <div class="stat-item"><b>🏆 WOD winners</b>${winners.map(escapeHtml).join("<br>")}</div>
+        <div class="stat-item">
+          <b>📣 What changed this week</b>
+          <div class="change-list">${renderWeeklyChanges(teams)}</div>
+        </div>
+      `;
+    }
+
+    function renderWeeklyChanges(teams) {
+      const latest = latestReleasedWod();
+      if (!latest) return `<div class="change-item">Waiting on the first WOD release.</div>`;
+      const leader = teams[0];
+      const chaser = teams[1];
+      const gap = leader && chaser ? leader.total_points - chaser.total_points : 0;
+      const comeback = [...teams].sort((a, b) => rankChangeValue(b) - rankChangeValue(a))[0];
+      const drops = [...teams].sort((a, b) => rankChangeValue(a) - rankChangeValue(b))[0];
+      const latestSwaps = teams
+        .flatMap((team) => team.swaps.map((swap) => ({ ...swap, teamName: team.name })))
+        .filter((swap) => swap.wod === latest.id);
+      const nextSwaps = teams
+        .flatMap((team) => team.swaps.map((swap) => ({ ...swap, teamName: team.name })))
+        .filter((swap) => swap.wod === latest.id + 1);
+      const swapDrama = latestSwaps.length
+        ? latestSwaps.map((swap) => `${swap.swapped_in} joined ${swap.teamName}; ${swap.swapped_out} got benched for WOD ${swap.wod}.`).join(" ")
+        : nextSwaps.length
+          ? `${nextSwaps.length} swap${nextSwaps.length === 1 ? "" : "s"} already logged for locked WOD ${latest.id + 1}. The transfer window is spicy.`
+          : "No new swaps this WOD. Captains are keeping the roster cards close.";
+
+      return `
+        <div class="change-item"><strong>Closest battle</strong>${escapeHtml(leader?.name || "TBA")} leads ${escapeHtml(chaser?.name || "the field")} by ${gap} pt${gap === 1 ? "" : "s"}.</div>
+        <div class="change-item"><strong>Momentum swing</strong>${escapeHtml(comeback?.name || "TBA")} ${escapeHtml(rankChange(comeback).label)} while ${escapeHtml(drops?.name || "TBA")} ${escapeHtml(rankChange(drops).label)}.</div>
+        <div class="change-item"><strong>Swap watch</strong>${escapeHtml(swapDrama)}</div>
       `;
     }
 
@@ -1019,7 +1217,7 @@
 
     function renderTeams() {
       $("#teamGrid").innerHTML = state.data.teams
-        .sort((a, b) => a.division.localeCompare(b.division) || a.overall_rank - b.overall_rank)
+        .sort((a, b) => a.overall_rank - b.overall_rank)
         .map((team) => {
           const currentRoster = team.roster.wod4 || team.roster.wod3 || team.roster.wod1;
           return `
@@ -1030,7 +1228,7 @@
                     <h3>${escapeHtml(team.name)}</h3>
                     <span class="muted">Overall rank ${team.overall_rank}</span>
                   </div>
-                  <span class="badge ${team.division === "Scaled" ? "scaled" : ""}">${escapeHtml(team.division)}</span>
+                  <span class="badge">${escapeHtml(team.division)}</span>
                 </div>
                 <ul class="roster">
                   ${currentRoster.map((athlete) => `
@@ -1100,7 +1298,6 @@
     function renderWods() {
       $("#wodGrid").innerHTML = state.data.wods.map((wod) => {
         const rows = state.data.teams
-          .filter((team) => wod.released || team.division === state.division)
           .filter((team) => scoreFor(team, wod.id))
           .sort((a, b) => (scoreFor(a, wod.id)?.rank ?? 999) - (scoreFor(b, wod.id)?.rank ?? 999))
           .map((team) => {
@@ -1153,13 +1350,26 @@
 
       $("#athleteRows").innerHTML = filtered.map((athlete) => `
         <tr>
-          <td><span class="athlete-name">${escapeHtml(athlete.name)}</span> ${athlete.captain ? "👑" : ""}</td>
+          <td>
+            <span class="athlete-name">${escapeHtml(athlete.name)}</span>
+            <div class="athlete-badges">${renderAthleteBadges(athlete)}</div>
+          </td>
           <td>${escapeHtml(athlete.currentTeam)}</td>
           <td>${escapeHtml(athlete.division)}</td>
           <td>${athlete.scores.map(escapeHtml).join("<br>")}</td>
           <td>${athlete.swapText ? escapeHtml(athlete.swapText) : "—"}</td>
         </tr>
       `).join("") || `<tr><td colspan="5">No athletes found.</td></tr>`;
+    }
+
+    function renderAthleteBadges(athlete) {
+      const badges = [];
+      if (athlete.captain) badges.push(["captain", "👑 Captain"]);
+      if (athlete.joined) badges.push(["joined", `Joined WOD ${athlete.joined}`]);
+      if (athlete.swappedOut) badges.push(["swapped", `Swapped Out WOD ${athlete.swappedOut}`]);
+      if (athlete.ironRoster) badges.push(["iron", "Iron Roster"]);
+      if (!badges.length) badges.push(["", "Active"]);
+      return badges.map(([className, label]) => `<span class="athlete-badge ${className}">${escapeHtml(label)}</span>`).join("");
     }
 
     function buildAthleteIndex() {
@@ -1174,11 +1384,15 @@
               division: team.division,
               captain: false,
               scoresByWod: {},
-              swapText: ""
+              swapText: "",
+              wodTeams: new Set(),
+              joined: null,
+              swappedOut: null
             };
             existing.currentTeam = team.name;
             existing.division = team.division;
             existing.captain = existing.captain || name === team.captain;
+            existing.wodTeams.add(`${team.id}:${wodId}`);
             const score = scoreFor(team, wodId);
             existing.scoresByWod[wodId] = `${state.data.wods.find((wod) => wod.id === wodId)?.name}: ${score?.score || "Locked"}`;
             people.set(name, existing);
@@ -1187,18 +1401,25 @@
 
         team.swaps.forEach((swap) => {
           const out = people.get(swap.swapped_out);
-          if (out) out.swapText = `${team.name} → out at WOD ${swap.wod}`;
+          if (out) {
+            out.swapText = `${team.name} → out at WOD ${swap.wod}`;
+            out.swappedOut = swap.wod;
+          }
           const incoming = people.get(swap.swapped_in) || {
             name: swap.swapped_in,
             currentTeam: team.name,
             division: team.division,
             captain: false,
             scoresByWod: {},
-            swapText: ""
+            swapText: "",
+            wodTeams: new Set(),
+            joined: null,
+            swappedOut: null
           };
           incoming.currentTeam = team.name;
           incoming.division = team.division;
           incoming.swapText = `${swap.swapped_in_from_team} → ${team.name} at WOD ${swap.wod}`;
+          incoming.joined = swap.wod;
           people.set(swap.swapped_in, incoming);
         });
       });
@@ -1206,6 +1427,7 @@
       return [...people.values()]
         .map((athlete) => ({
           ...athlete,
+          ironRoster: athlete.wodTeams.size === state.data.wods.length && !athlete.joined && !athlete.swappedOut,
           scores: state.data.wods.map((wod) => athlete.scoresByWod[wod.id] || `${wod.name}: No roster`)
         }))
         .sort((a, b) => a.name.localeCompare(b.name));
@@ -1226,6 +1448,16 @@
       };
       tick();
       setInterval(tick, 1000);
+    }
+
+    function teamsForDivision() {
+      return [...state.data.teams].sort((a, b) => a.overall_rank - b.overall_rank);
+    }
+
+    function latestReleasedWod() {
+      return [...state.data.wods]
+        .filter((wod) => wod.released)
+        .sort((a, b) => b.id - a.id)[0];
     }
 
     function scoreFor(team, wodId) {

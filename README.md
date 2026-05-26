@@ -65,7 +65,7 @@ wod_id,name,release_date,released,format,description
 - Fetches each sheet as a CSV using the Google Sheets publish-to-web CSV URL.
 - Merges all sheets into a single `data.json`.
 - Commits and pushes `data.json` to the repo.
-- GitHub Pages serves the updated file automatically.
+- The Pages deployment workflow publishes the current static files to GitHub Pages automatically.
 
 Make the Google Sheet public with View access and publish each sheet to the web as CSV to get the URL.
 
@@ -256,9 +256,64 @@ jobs:
 
 Add your spreadsheet ID as a repository secret named `GOOGLE_SHEET_ID`.
 
+Create `.github/workflows/deploy-pages.yml` with this content:
+
+```yaml
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - Update Leaderboard Data
+    types:
+      - completed
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+In the GitHub repository settings, go to Settings -> Pages and set Build and deployment Source to `GitHub Actions`.
+
 ## 6. Manual Update
 
-To update manually, open the GitHub repository, go to Actions, select `Update Leaderboard Data`, click `Run workflow`, and confirm. The `workflow_dispatch` trigger runs the same update job outside the Thursday schedule.
+To update data manually, open the GitHub repository, go to Actions, select `Update Leaderboard Data`, click `Run workflow`, and confirm. The `workflow_dispatch` trigger runs the same update job outside the Thursday schedule.
+
+To redeploy the current static files manually, select `Deploy GitHub Pages`, click `Run workflow`, and confirm.
 
 ## 7. File Structure
 
@@ -269,5 +324,6 @@ To update manually, open the GitHub repository, go to Actions, select `Update Le
 ├── README.md
 └── .github/
     └── workflows/
-        └── update-leaderboard.yml
+        ├── update-leaderboard.yml
+        └── deploy-pages.yml
 ```
