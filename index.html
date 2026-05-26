@@ -714,6 +714,26 @@
       text-decoration-color: var(--red);
     }
 
+    .team-card .swap-list {
+      gap: 0.35rem;
+    }
+
+    .team-card .swap-row {
+      min-height: 28px;
+      padding: 0.3rem 0.45rem;
+      font-size: 0.78rem;
+    }
+
+    .team-card .swap-badge {
+      min-height: 20px;
+      padding: 0 0.35rem;
+      font-size: 0.64rem;
+    }
+
+    .team-card .swap-list + .team-details {
+      margin-top: 0.25rem;
+    }
+
     .team-details {
       display: none;
       padding: 0 1rem 1rem;
@@ -1130,9 +1150,8 @@
               <tr>
                 <th>Athlete</th>
                 <th>Current Team</th>
-                <th>Division</th>
                 <th>WOD Scores</th>
-                <th>Swap</th>
+                <th>Swap History</th>
               </tr>
             </thead>
             <tbody id="athleteRows"></tbody>
@@ -1509,7 +1528,7 @@
     function renderAthletes() {
       const athletes = buildAthleteIndex();
       const filtered = athletes.filter((athlete) => {
-        const haystack = `${athlete.name} ${athlete.currentTeam} ${athlete.division} ${athlete.swapText}`.toLowerCase();
+        const haystack = `${athlete.name} ${athlete.currentTeam} ${athlete.swapLines.join(" ")}`.toLowerCase();
         return haystack.includes(state.athleteQuery);
       });
 
@@ -1520,20 +1539,16 @@
             <div class="athlete-badges">${renderAthleteBadges(athlete)}</div>
           </td>
           <td>${escapeHtml(athlete.currentTeam)}</td>
-          <td>${escapeHtml(athlete.division)}</td>
           <td>${athlete.scores.map(escapeHtml).join("<br>")}</td>
-          <td>${athlete.swapText ? escapeHtml(athlete.swapText) : "—"}</td>
+          <td class="muted" style="font-size:0.82rem">${athlete.swapLines.length ? athlete.swapLines.map(escapeHtml).join("<br>") : "—"}</td>
         </tr>
-      `).join("") || `<tr><td colspan="5">No athletes found.</td></tr>`;
+      `).join("") || `<tr><td colspan="4">No athletes found.</td></tr>`;
     }
 
     function renderAthleteBadges(athlete) {
       const badges = [];
       if (athlete.captain) badges.push(["captain", "👑 Captain"]);
-      if (athlete.joined) badges.push(["joined", `Joined WOD ${athlete.joined}`]);
-      if (athlete.swappedOut) badges.push(["swapped", `Swapped Out WOD ${athlete.swappedOut}`]);
-      if (athlete.ironRoster) badges.push(["iron", "Iron Roster"]);
-      if (!badges.length) badges.push(["", "Active"]);
+      if (athlete.ironRoster) badges.push(["iron", "Full Run"]);
       return badges.map(([className, label]) => `<span class="athlete-badge ${className}">${escapeHtml(label)}</span>`).join("");
     }
 
@@ -1549,7 +1564,7 @@
               division: team.division,
               captain: false,
               scoresByWod: {},
-              swapText: "",
+              swapLines: [],
               wodTeams: new Set(),
               joined: null,
               swappedOut: null
@@ -1567,7 +1582,7 @@
         team.swaps.forEach((swap) => {
           const out = people.get(swap.swapped_out);
           if (out) {
-            out.swapText = `${team.name} → out at WOD ${swap.wod}`;
+            out.swapLines.push(`WOD ${swap.wod}: Released from ${team.name}`);
             out.swappedOut = swap.wod;
           }
           const incoming = people.get(swap.swapped_in) || {
@@ -1576,14 +1591,14 @@
             division: team.division,
             captain: false,
             scoresByWod: {},
-            swapText: "",
+            swapLines: [],
             wodTeams: new Set(),
             joined: null,
             swappedOut: null
           };
           incoming.currentTeam = team.name;
           incoming.division = team.division;
-          incoming.swapText = `${swap.swapped_in_from_team} → ${team.name} at WOD ${swap.wod}`;
+          incoming.swapLines.push(`WOD ${swap.wod}: Joined ${team.name}`);
           incoming.joined = swap.wod;
           people.set(swap.swapped_in, incoming);
         });
