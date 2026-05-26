@@ -7,6 +7,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Chill Out Games 2026 Leaderboard">
+  <meta property="og:description" content="CrossFit team leaderboard — 12 teams, 4 WODs, roster swaps, weekly releases. Track your team's climb to the podium.">
+  <meta property="og:image" content="https://wilyfreddie.github.io/ChillOutGames2026/og-image.png">
+  <meta property="og:url" content="https://wilyfreddie.github.io/ChillOutGames2026/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chill Out Games 2026 Leaderboard">
+  <meta name="twitter:description" content="CrossFit team leaderboard — 12 teams, 4 WODs, roster swaps, weekly releases.">
+  <meta name="twitter:image" content="https://wilyfreddie.github.io/ChillOutGames2026/og-image.png">
   <style>
     :root {
       --bg: #1f0000;
@@ -881,6 +890,132 @@
         font-size: 0.9rem;
       }
     }
+
+    .podium-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .swap-ticker-wrap {
+      display: none;
+      overflow: hidden;
+      background: rgba(235, 2, 21, 0.08);
+      border-bottom: 1px solid var(--line);
+      padding: 0.5rem 0;
+    }
+
+    .swap-ticker-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: tickerScroll 35s linear infinite;
+      white-space: nowrap;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .swap-ticker-wrap:hover .swap-ticker-track {
+      animation-play-state: paused;
+    }
+
+    .ticker-sep {
+      color: var(--muted);
+      opacity: 0.4;
+    }
+
+    .swap-ticker-track span.muted {
+      opacity: 0.5;
+    }
+
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .swap-alert {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--orange);
+      margin-left: 0.5rem;
+      vertical-align: middle;
+      animation: alertPulse 1.2s ease-in-out infinite;
+      box-shadow: 0 0 8px rgba(235, 2, 21, 0.5);
+    }
+
+    @keyframes alertPulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.35); }
+    }
+
+    .drama-banner {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem 1rem;
+      background: linear-gradient(90deg, rgba(235, 2, 21, 0.16), rgba(37, 150, 190, 0.08));
+      border: 1px solid rgba(235, 2, 21, 0.35);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      animation: reveal 300ms ease;
+      font-size: 0.92rem;
+    }
+
+    .drama-banner button {
+      flex: 0 0 auto;
+      border: 0;
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text);
+      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .drama-banner button:hover {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .transfer-flow {
+      display: grid;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .transfer-flow-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .transfer-chip {
+      padding: 0.22rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line);
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+
+    .transfer-chip.player {
+      background: rgba(37, 150, 190, 0.18);
+      border-color: rgba(37, 150, 190, 0.4);
+    }
+
+    .transfer-chip.dest {
+      background: rgba(235, 2, 21, 0.15);
+      border-color: rgba(235, 2, 21, 0.35);
+    }
+
+    .transfer-arrow {
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
@@ -903,6 +1038,8 @@
     </div>
   </header>
 
+  <div class="swap-ticker-wrap" id="swapTicker" aria-label="Transfer ticker"></div>
+
   <main class="app">
     <nav class="tabs" aria-label="Leaderboard sections">
       <button class="tab-btn" aria-selected="true" data-tab="leaderboard">Leaderboard</button>
@@ -918,6 +1055,7 @@
           <p class="muted">Higher points win. Ties use the most recent released WOD rank.</p>
         </div>
       </div>
+      <div class="drama-banner" id="dramaBanner" aria-live="polite"></div>
       <div class="podium-strip" id="podiumStrip" aria-label="Podium"></div>
       <div class="leaderboard-layout">
         <div class="leaderboard-list" id="leaderboardList"></div>
@@ -1051,11 +1189,14 @@
 
     function renderAll() {
       renderPodium();
+      setupPodiumTilt();
       renderLeaderboard();
       renderStats();
       renderTeams();
       renderWods();
       renderAthletes();
+      renderSwapTicker();
+      renderDramaBanner();
     }
 
     function renderPodium() {
@@ -1080,12 +1221,19 @@
       $("#leaderboardList").innerHTML = teams.map((team) => {
         const medal = ["🥇", "🥈", "🥉"][team.overall_rank - 1] || team.overall_rank;
         const change = rankChange(team);
+        const upcomingSwaps = team.swaps.filter((swap) => {
+          const wod = state.data.wods.find((w) => w.id === swap.wod);
+          return wod && !wod.released;
+        });
+        const swapAlert = upcomingSwaps.length
+          ? `<span class="swap-alert" title="Roster change locked for WOD ${upcomingSwaps.map((s) => s.wod).join(", ")}"></span>`
+          : "";
         return `
-          <article class="leader-card" style="animation-delay:${team.overall_rank * 35}ms">
+          <article class="leader-card" data-team-id="${escapeHtml(team.id)}" style="animation-delay:${team.overall_rank * 35}ms">
             <div class="leader-main">
               <div class="rank">${medal}</div>
               <div>
-                <div class="team-name">${escapeHtml(team.name)}</div>
+                <div class="team-name">${escapeHtml(team.name)}${swapAlert}</div>
                 <div class="muted">${escapeHtml(team.division)} Division</div>
                 ${renderMomentum(team)}
               </div>
@@ -1170,6 +1318,7 @@
           <b>📣 What changed this week</b>
           <div class="change-list">${renderWeeklyChanges(teams)}</div>
         </div>
+        ${buildTransferMap()}
       `;
     }
 
@@ -1480,6 +1629,98 @@
         '"': "&quot;",
         "'": "&#039;"
       }[char]));
+    }
+
+    function setupPodiumTilt() {
+      $$(".podium-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          card.style.transform = `perspective(800px) rotateY(${x * 16}deg) rotateX(${y * -12}deg) scale3d(1.03,1.03,1.03)`;
+          card.style.boxShadow = `${x * 10}px ${y * 10}px 30px rgba(235,2,21,0.18), 0 22px 70px rgba(0,0,0,0.42)`;
+        });
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "";
+          card.style.boxShadow = "";
+        });
+      });
+    }
+
+    function renderSwapTicker() {
+      const swaps = state.data.teams.flatMap((team) =>
+        team.swaps.map((swap) => ({ ...swap, teamName: team.name }))
+      );
+      const container = $("#swapTicker");
+      if (!swaps.length || !container) {
+        if (container) container.style.display = "none";
+        return;
+      }
+      const items = swaps.map((swap) =>
+        `<span>${escapeHtml(swap.swapped_out)} <span class="muted">from ${escapeHtml(swap.swapped_in_from_team)} → ${escapeHtml(swap.teamName)} (WOD ${swap.wod})</span></span>`
+      );
+      const chunk = items.join(' <span class="ticker-sep">⬤</span> ');
+      container.innerHTML = `<div class="swap-ticker-track">${chunk} <span class="ticker-sep">⬤</span> ${chunk}</div>`;
+      container.style.display = "block";
+    }
+
+    function renderDramaBanner() {
+      const latest = latestReleasedWod();
+      if (!latest) return;
+      const latestSwaps = state.data.teams.flatMap((team) =>
+        team.swaps
+          .filter((swap) => swap.wod === latest.id)
+          .map((swap) => ({ ...swap, teamName: team.name }))
+      );
+      const banner = $("#dramaBanner");
+      if (!latestSwaps.length || !banner) {
+        if (banner) banner.style.display = "none";
+        return;
+      }
+      if (sessionStorage.getItem("drama-banner-dismissed") === String(latest.id)) {
+        banner.style.display = "none";
+        return;
+      }
+      const teamList = [...new Set(latestSwaps.map((s) => s.teamName))].slice(0, 3).join(", ");
+      const andOthers = latestSwaps.length > 3 ? " and others" : "";
+      banner.innerHTML = `
+        <span>🚨 <strong>${escapeHtml(latest.name)} shook the roster!</strong> ${latestSwaps.length} swap${latestSwaps.length === 1 ? "" : "s"} across ${escapeHtml(teamList)}${andOthers}.</span>
+        <button id="dismissBanner">✕</button>
+      `;
+      banner.style.display = "flex";
+      const dismissBtn = $("#dismissBanner");
+      if (dismissBtn) {
+        dismissBtn.addEventListener("click", () => {
+          banner.style.display = "none";
+          sessionStorage.setItem("drama-banner-dismissed", String(latest.id));
+        });
+      }
+    }
+
+    function buildTransferMap() {
+      const latest = latestReleasedWod();
+      if (!latest) return "";
+      const latestSwaps = state.data.teams.flatMap((team) =>
+        team.swaps
+          .filter((swap) => swap.wod === latest.id)
+          .map((swap) => ({ ...swap, teamName: team.name }))
+      );
+      if (!latestSwaps.length) return "";
+      const flows = latestSwaps.map((swap) => `
+        <div class="transfer-flow-row">
+          <span class="transfer-chip">${escapeHtml(swap.swapped_in_from_team)}</span>
+          <span class="transfer-arrow">→</span>
+          <span class="transfer-chip player">${escapeHtml(swap.swapped_in)}</span>
+          <span class="transfer-arrow">to</span>
+          <span class="transfer-chip dest">${escapeHtml(swap.teamName)}</span>
+        </div>
+      `).join("");
+      return `
+        <div class="stat-item">
+          <b>🔀 Roster shuffle for ${escapeHtml(latest.name)}</b>
+          <div class="transfer-flow">${flows}</div>
+        </div>
+      `;
     }
 
     loadData().catch((error) => {

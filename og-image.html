@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OG Image — Chill Out Games 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: "Barlow Condensed", "Inter", system-ui, -apple-system, sans-serif;
+      color: #f6f6f6;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(235, 2, 21, 0.32), transparent 50%),
+        radial-gradient(circle at 85% 5%, rgba(37, 150, 190, 0.28), transparent 50%),
+        linear-gradient(180deg, #1f0000 0%, #0d0d0d 100%);
+    }
+    .card {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .logo {
+      width: 100px;
+      height: 100px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 2rem;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(145deg, rgba(235, 2, 21, 0.95), rgba(37, 150, 190, 0.86));
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: 0;
+      box-shadow: 0 18px 60px rgba(235, 2, 21, 0.28);
+    }
+    h1 {
+      font-family: "Barlow Condensed", sans-serif;
+      font-size: 7rem;
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      margin: 0 0 0.6rem;
+    }
+    p {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #a8a8a8;
+      max-width: 700px;
+    }
+    .accent {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #eb0215, #2596be);
+    }
+    .pill {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1.2rem;
+      color: #f6f6f6;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="content">
+      <div class="logo">COG</div>
+      <h1>Chill Out Games 2026</h1>
+      <p>12 teams. 4 WODs. Roster swaps. Who's taking the podium?</p>
+      <div class="pill">Live Leaderboard</div>
+    </div>
+    <div class="accent"></div>
+  </div>
+</body>
+</html>
