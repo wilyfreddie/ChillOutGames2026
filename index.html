@@ -9,13 +9,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Chill Out Games 2026 Leaderboard">
-  <meta property="og:description" content="CrossFit team leaderboard — 12 teams, 4 WODs, roster swaps, weekly releases. Track your team's climb to the podium.">
+  <meta property="og:description" content="CrossFit team leaderboard — 7 teams, 4 WODs, roster swaps, weekly releases. Track your team's climb to the podium.">
   <meta property="og:image" content="https://wilyfreddie.github.io/ChillOutGames2026/og-image.png">
   <meta property="og:url" content="https://wilyfreddie.github.io/ChillOutGames2026/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Chill Out Games 2026 Leaderboard">
-  <meta name="twitter:description" content="CrossFit team leaderboard — 12 teams, 4 WODs, roster swaps, weekly releases.">
+  <meta name="twitter:description" content="CrossFit team leaderboard — 7 teams, 4 WODs, roster swaps, weekly releases.">
   <meta name="twitter:image" content="https://wilyfreddie.github.io/ChillOutGames2026/og-image.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23eb0215'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white' font-weight='bold'>CO</text></svg>">
   <style>
     :root {
       --bg: #1f0000;
@@ -24,8 +25,8 @@
       --line: rgba(255, 255, 255, 0.12);
       --text: #f6f6f6;
       --muted: #a8a8a8;
-      --orange: #eb0215;
-      --lime: #2596be;
+      --red: #eb0215;
+      --blue: #2596be;
       --red: #ff4747;
       --green: #31d07b;
       --shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
@@ -154,7 +155,7 @@
     }
 
     .event-tag {
-      color: var(--lime);
+      color: var(--blue);
       text-transform: uppercase;
       letter-spacing: 0.14em;
       font-weight: 800;
@@ -204,7 +205,7 @@
     }
 
     .timer-number {
-      color: var(--orange);
+      color: var(--red);
       font-size: clamp(2rem, 8vw, 3.8rem);
       line-height: 0.9;
     }
@@ -254,15 +255,13 @@
       letter-spacing: 0.06em;
     }
 
-    .tab-btn[aria-selected="true"],
-    .division-btn.active {
+    .tab-btn[aria-selected="true"] {
       color: #111;
       border-color: transparent;
-      background: var(--lime);
+      background: var(--blue);
     }
 
     .tab-btn:hover,
-    .division-btn:hover,
     .icon-btn:hover {
       transform: translateY(-1px);
       border-color: rgba(235, 2, 21, 0.62);
@@ -298,16 +297,6 @@
 
     .muted {
       color: var(--muted);
-    }
-
-    .division-toggle {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .division-btn {
-      padding: 0 0.9rem;
     }
 
     .podium-strip {
@@ -374,7 +363,7 @@
     .podium-points {
       position: relative;
       z-index: 1;
-      color: var(--lime);
+      color: var(--blue);
       font-weight: 900;
     }
 
@@ -427,7 +416,7 @@
       display: grid;
       place-items: center;
       color: #101010;
-      background: var(--orange);
+      background: var(--red);
       border-radius: 8px;
       font-size: 1.7rem;
       font-weight: 800;
@@ -447,7 +436,7 @@
 
     .points strong {
       display: block;
-      color: var(--lime);
+      color: var(--blue);
       font-family: "Barlow Condensed", sans-serif;
       font-size: 2rem;
       line-height: 1;
@@ -497,7 +486,7 @@
     .momentum-dot.hot {
       color: #111;
       border-color: transparent;
-      background: var(--lime);
+      background: var(--blue);
       box-shadow: 0 0 20px rgba(37, 150, 190, 0.3);
     }
 
@@ -555,7 +544,7 @@
     .stat-item b {
       display: block;
       margin-bottom: 0.1rem;
-      color: var(--lime);
+      color: var(--blue);
     }
 
     .change-list {
@@ -573,7 +562,7 @@
     }
 
     .change-item strong {
-      color: var(--orange);
+      color: var(--red);
       margin-right: 0.35rem;
     }
 
@@ -629,11 +618,11 @@
 
     .badge {
       color: #101010;
-      background: var(--orange);
+      background: var(--red);
     }
 
     .badge.scaled {
-      background: var(--lime);
+      background: var(--blue);
     }
 
     .athlete-badges {
@@ -650,7 +639,7 @@
       padding: 0 0.42rem;
       border-radius: 999px;
       color: #111;
-      background: var(--lime);
+      background: var(--blue);
       font-size: 0.66rem;
       font-weight: 900;
       text-transform: uppercase;
@@ -659,7 +648,7 @@
     }
 
     .athlete-badge.captain {
-      background: var(--orange);
+      background: var(--red);
     }
 
     .athlete-badge.joined {
@@ -848,7 +837,7 @@
     }
 
     .search:focus {
-      border-color: var(--orange);
+      border-color: var(--red);
       box-shadow: 0 0 0 3px rgba(235, 2, 21, 0.2);
     }
 
@@ -993,7 +982,7 @@
       width: 9px;
       height: 9px;
       border-radius: 50%;
-      background: var(--orange);
+      background: var(--red);
       margin-left: 0.5rem;
       vertical-align: middle;
       animation: alertPulse 1.2s ease-in-out infinite;
@@ -1162,7 +1151,7 @@
     }
     .share-rank {
       font-size: 0.9rem;
-      color: var(--lime);
+      color: var(--blue);
       font-weight: 700;
       position: relative;
       z-index: 1;
@@ -1195,7 +1184,7 @@
       font-family: "Barlow Condensed", sans-serif;
       font-size: 1.1rem;
       font-weight: 800;
-      color: var(--lime);
+      color: var(--blue);
     }
     .sh-score-wod {
       display: block;
@@ -1209,7 +1198,7 @@
       display: block;
       font-size: 0.7rem;
       font-weight: 800;
-      color: var(--orange);
+      color: var(--red);
     }
     .share-footer {
       margin-top: 1rem;
@@ -1243,8 +1232,24 @@
       transition: border-color 180ms, background 180ms;
     }
     .share-btn:hover {
-      border-color: var(--lime);
+      border-color: var(--blue);
       background: rgba(37,150,190,0.1);
+    }
+    .share-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    @keyframes skeletonPulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+    .skeleton-pulse {
+      background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 100%);
+      background-size: 200% 100%;
+      animation: skeletonPulse 1.5s ease-in-out infinite;
+      min-height: 60px;
     }
     .share-trigger {
       display: inline-flex;
@@ -1261,7 +1266,7 @@
       transition: color 180ms, border-color 180ms, background 180ms;
     }
     .share-trigger:hover {
-      color: var(--lime);
+      color: var(--blue);
       border-color: rgba(37,150,190,0.4);
       background: rgba(37,150,190,0.08);
     }
@@ -1271,6 +1276,69 @@
     }
     .share-card.swap-share-card::before {
       background: radial-gradient(circle at 50% 20%, rgba(235,2,21,0.15), transparent 40%);
+    }
+
+    .movements {
+      margin: 0.75rem 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .movement {
+      border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,0.12);
+    }
+    .movement:last-child {
+      border-bottom: 0;
+    }
+    .movement-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 180ms;
+    }
+    .movement-btn:hover {
+      background: rgba(255,255,255,0.04);
+    }
+    .movement-btn .arrow {
+      margin-left: auto;
+      transition: transform 200ms;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+    .movement-btn.expanded .arrow {
+      transform: rotate(180deg);
+    }
+    .movement-standards {
+      display: none;
+      padding: 0 0.75rem 0.75rem 1.25rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .movement-standards.open {
+      display: block;
+    }
+    .movement-standards li {
+      list-style: none;
+      margin-bottom: 0.15rem;
+      padding-left: 0.8rem;
+      position: relative;
+    }
+    .movement-standards li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      font-weight: 700;
     }
   </style>
 </head>
@@ -1312,10 +1380,10 @@
         </div>
       </div>
       <div class="drama-banner" id="dramaBanner" aria-live="polite"></div>
-      <div class="podium-strip" id="podiumStrip" aria-label="Podium"></div>
+      <div class="podium-strip" id="podiumStrip" aria-label="Podium"><div class="skeleton-pulse" style="height:174px;border-radius:8px"></div></div>
       <div class="leaderboard-layout">
-        <div class="leaderboard-list" id="leaderboardList"></div>
-        <aside class="stats-panel" id="statsPanel" aria-label="Stats panel"></aside>
+        <div class="leaderboard-list" id="leaderboardList"><div class="skeleton-pulse" style="height:80px;border-radius:8px;margin-bottom:0.5rem"></div><div class="skeleton-pulse" style="height:80px;border-radius:8px;margin-bottom:0.5rem"></div><div class="skeleton-pulse" style="height:80px;border-radius:8px"></div></div>
+        <aside class="stats-panel" id="statsPanel" aria-label="Stats panel"><div class="skeleton-pulse" style="height:200px;border-radius:8px"></div></aside>
       </div>
     </section>
 
@@ -1326,7 +1394,7 @@
           <p class="muted">Tap a team to expand per-WOD scores by active roster.</p>
         </div>
       </div>
-      <div class="team-grid" id="teamGrid"></div>
+      <div class="team-grid" id="teamGrid"><div class="skeleton-pulse" style="height:120px;border-radius:8px"></div><div class="skeleton-pulse" style="height:120px;border-radius:8px"></div></div>
     </section>
 
     <section id="wods" class="section">
@@ -1336,7 +1404,7 @@
           <p class="muted">Released workouts show scored results. Locked workouts stay blurred.</p>
         </div>
       </div>
-      <div class="wod-grid" id="wodGrid"></div>
+      <div class="wod-grid" id="wodGrid"><div class="skeleton-pulse" style="height:200px;border-radius:8px"></div><div class="skeleton-pulse" style="height:200px;border-radius:8px"></div></div>
     </section>
 
     <section id="athletes" class="section">
@@ -1351,7 +1419,7 @@
       </div>
       <div class="athlete-panel">
         <div class="table-wrap">
-          <table>
+          <table aria-label="Athlete roster and performance">
             <thead>
               <tr>
                 <th>Athlete</th>
@@ -1398,6 +1466,7 @@
 
     function init(data) {
       state.data = normalizeData(data);
+      $$(".skeleton-pulse").forEach((s) => s.remove());
       $(".hero-copy").textContent = `${state.data.competition} is live with ${state.data.teams.length} teams chasing the highest score.`;
       setupTabs();
       renderAll();
@@ -1431,14 +1500,27 @@
     }
 
     function setupTabs() {
+      const activate = (tabId) => {
+        $$(".tab-btn").forEach((btn) => btn.setAttribute("aria-selected", btn.dataset.tab === tabId ? "true" : "false"));
+        $$(".section").forEach((section) => section.classList.toggle("active", section.id === tabId));
+        location.hash = tabId;
+      };
       $$(".tab-btn").forEach((button) => {
-        button.addEventListener("click", () => {
-          $$(".tab-btn").forEach((btn) => btn.setAttribute("aria-selected", "false"));
-          button.setAttribute("aria-selected", "true");
-          $$(".section").forEach((section) => section.classList.remove("active"));
-          $(`#${button.dataset.tab}`).classList.add("active");
-        });
+        button.addEventListener("click", () => activate(button.dataset.tab));
       });
+      const tabsNav = document.querySelector(".tabs");
+      if (tabsNav) {
+        tabsNav.addEventListener("keydown", (e) => {
+          const btns = $$(".tab-btn");
+          const idx = btns.findIndex((b) => b.getAttribute("aria-selected") === "true");
+          if (e.key === "ArrowRight") { e.preventDefault(); btns[(idx + 1) % btns.length].click(); }
+          if (e.key === "ArrowLeft") { e.preventDefault(); btns[(idx - 1 + btns.length) % btns.length].click(); }
+          if (e.key === "Home") { e.preventDefault(); btns[0].click(); }
+          if (e.key === "End") { e.preventDefault(); btns[btns.length - 1].click(); }
+        });
+      }
+      const hash = location.hash.replace("#", "");
+      if (hash && $(`#${hash}`)) activate(hash);
     }
 
 
@@ -1462,7 +1544,7 @@
         return `
           <article class="podium-card ${rankClass}" data-place="${team.overall_rank}">
             <div class="podium-medal">${medals[team.overall_rank - 1]}</div>
-            <div class="podium-name">${escapeHtml(team.name)}</div>
+            <div class="podium-name">${team.icon} ${escapeHtml(team.name)}</div>
             <div class="podium-points">${team.total_points} pts <span class="muted">after ${latestReleasedWod()?.name || "WOD"}</span></div>
             ${renderMomentum(team)}
           </article>
@@ -1488,7 +1570,7 @@
             <div class="leader-main">
               <div class="rank">${medal}</div>
               <div>
-                <div class="team-name">${escapeHtml(team.name)}${swapAlert}</div>
+                <div class="team-name">${team.icon} ${escapeHtml(team.name)}${swapAlert}</div>
                 ${renderMomentum(team)}
               </div>
               <div class="points"><strong>${team.total_points}</strong><span class="muted">points</span></div>
@@ -1619,7 +1701,7 @@
               <button class="team-toggle" type="button" aria-expanded="false">
                 <div class="card-row">
                   <div>
-                    <h3 class="team-name" style="font-size:1.1rem;margin:0">${escapeHtml(team.name)}</h3>
+                    <h3 class="team-name" style="font-size:1.1rem;margin:0">${team.icon} ${escapeHtml(team.name)}</h3>
                     <span class="muted">Rank ${team.overall_rank} · ${team.total_points} pts</span>
                   </div>
                   <button class="share-trigger" data-team-id="${escapeHtml(team.id)}">↥ Share</button>
@@ -1699,12 +1781,24 @@
             const score = scoreFor(team, wod.id);
             return `
               <tr>
-                <td>${escapeHtml(team.name)}</td>
+                <td>${team.icon} ${escapeHtml(team.name)}</td>
                 <td>${score?.score ? escapeHtml(score.score) : "TBA"}</td>
                 <td>${score?.points ?? "Locked"}</td>
               </tr>
             `;
           }).join("");
+
+        const movements = (wod.movements || []).map((m, i) => `
+          <div class="movement">
+            <button class="movement-btn" data-wod="${wod.id}" data-move="${i}" type="button">
+              ${escapeHtml(m.name)}
+              <span class="arrow">▾</span>
+            </button>
+            <div class="movement-standards">
+              <ul>${m.standards.map((s) => `<li>${escapeHtml(s)}</li>`).join("")}</ul>
+            </div>
+          </div>
+        `).join("");
 
         return `
           <article class="wod-card">
@@ -1713,10 +1807,12 @@
               <div class="wod-meta">
                 <span class="pill">${formatDate(wod.release_date)}</span>
                 <span class="pill">${escapeHtml(wod.format)}</span>
+                <span class="pill" style="border-color:rgba(235,2,21,0.4);color:var(--red)">${escapeHtml(wod.time_cap || "")}</span>
               </div>
               <p>${escapeHtml(wod.description)}</p>
+              ${movements ? `<div class="movements">${movements}</div>` : ""}
               <div class="table-wrap">
-                <table>
+                <table aria-label="${escapeHtml(wod.name)} scores">
                   <thead><tr><th>Team</th><th>Score</th><th>Pts</th></tr></thead>
                   <tbody>${rows}</tbody>
                 </table>
@@ -1728,10 +1824,22 @@
       }).join("");
     }
 
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".movement-btn");
+      if (btn) {
+        btn.classList.toggle("expanded");
+        btn.nextElementSibling.classList.toggle("open");
+      }
+    });
+
     function setupSearch() {
+      let debounceTimer;
       $("#athleteSearch").addEventListener("input", (event) => {
-        state.athleteQuery = event.target.value.trim().toLowerCase();
-        renderAthletes();
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          state.athleteQuery = event.target.value.trim().toLowerCase();
+          renderAthletes();
+        }, 150);
       });
     }
 
@@ -1748,7 +1856,7 @@
             <span class="athlete-name">${escapeHtml(athlete.name)}</span>
             <div class="athlete-badges">${renderAthleteBadges(athlete)}</div>
           </td>
-          <td>${escapeHtml(athlete.currentTeam)}</td>
+          <td>${teamIcon(athlete.currentTeamId)}${escapeHtml(athlete.currentTeam)}</td>
           <td>${athlete.scores.map(escapeHtml).join("<br>")}</td>
           <td class="muted" style="font-size:0.82rem">${athlete.swapLines.length ? athlete.swapLines.map(escapeHtml).join("<br>") : "—"}${athlete.swappedOut ? `<br><button class="swap-share-trigger" data-athlete="${escapeHtml(athlete.name)}" style="margin-top:0.25rem;background:none;border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:0.65rem;cursor:pointer;padding:0.08rem 0.4rem;border-radius:4px">↥ Swap story</button>` : ""}</td>
         </tr>
@@ -1771,7 +1879,7 @@
             const existing = people.get(name) || {
               name,
               currentTeam: team.name,
-              division: team.division,
+              currentTeamId: team.id,
               captain: false,
               scoresByWod: {},
               swapLines: [],
@@ -1780,7 +1888,7 @@
               swappedOut: null
             };
             existing.currentTeam = team.name;
-            existing.division = team.division;
+            existing.currentTeamId = team.id;
             existing.captain = existing.captain || name === team.captain;
             existing.wodTeams.add(`${team.id}:${wodId}`);
             const score = scoreFor(team, wodId);
@@ -1798,7 +1906,7 @@
           const incoming = people.get(swap.swapped_in) || {
             name: swap.swapped_in,
             currentTeam: team.name,
-            division: team.division,
+            currentTeamId: team.id,
             captain: false,
             scoresByWod: {},
             swapLines: [],
@@ -1807,7 +1915,6 @@
             swappedOut: null
           };
           incoming.currentTeam = team.name;
-          incoming.division = team.division;
           incoming.swapLines.push(`WOD ${swap.wod}: Joined ${team.name}`);
           incoming.joined = swap.wod;
           people.set(swap.swapped_in, incoming);
@@ -1824,6 +1931,15 @@
     }
 
     function startCountdown(dateValue) {
+      const allReleased = state.data.wods.every((w) => w.released);
+      if (allReleased) {
+        const countdown = document.querySelector(".countdown");
+        if (countdown) {
+          countdown.innerHTML = '<div class="timer-card" style="grid-column:1/-1"><span class="timer-number" style="font-size:1.3rem;color:var(--green);white-space:nowrap">🎉 Season Complete</span></div>';
+          countdown.style.gridTemplateColumns = "1fr";
+        }
+        return;
+      }
       const target = new Date(dateValue).getTime();
       const tick = () => {
         const diff = Math.max(0, target - Date.now());
@@ -1860,6 +1976,11 @@
 
     function pad(value) {
       return String(value).padStart(2, "0");
+    }
+
+    function teamIcon(teamId) {
+      const t = state.data.teams.find((tm) => tm.id === teamId);
+      return t ? t.icon + " " : "";
     }
 
     function escapeHtml(value) {
@@ -1923,7 +2044,7 @@
         return;
       }
       const teamList = [...new Set(latestSwaps.map((s) => s.teamName))].slice(0, 3).join(", ");
-      const andOthers = latestSwaps.length > 3 ? " and others" : "";
+      const andOthers = new Set(latestSwaps.map((s) => s.teamName)).size > 3 ? " and others" : "";
       banner.innerHTML = `
         <span>🚨 <strong>${escapeHtml(latest.name)} shook the roster!</strong> ${latestSwaps.length} swap${latestSwaps.length === 1 ? "" : "s"} across ${escapeHtml(teamList)}${andOthers}.</span>
         <button id="dismissBanner">✕</button>
@@ -1984,43 +2105,61 @@
     function openShareModal(html, filename) {
       $("#sharePreview").innerHTML = html;
       $("#shareOverlay").classList.add("open");
+      const shareBtn = $("#shareBtn");
+      const downloadBtn = $("#downloadBtn");
+      shareBtn.disabled = false;
+      downloadBtn.disabled = false;
+      shareBtn.textContent = "📤 Share";
+      downloadBtn.textContent = "💾 Save";
       let canvas = null;
+      let captured = false;
       const doCapture = () => {
         if (canvas) return Promise.resolve(canvas);
+        shareBtn.textContent = "⏳ Generating...";
+        downloadBtn.textContent = "⏳ Generating...";
         return new Promise((resolve, reject) => {
-          const cap = () => html2canvas($("#shareCard"), { scale: 2, backgroundColor: null, useCORS: true })
-            .then((c) => { canvas = c; resolve(c); }).catch(reject);
+          const timeout = setTimeout(() => reject(new Error("timeout")), 15000);
+          const cap = () => {
+            html2canvas($("#shareCard"), { scale: 2, backgroundColor: null, useCORS: true })
+              .then((c) => { clearTimeout(timeout); canvas = c; captured = true; shareBtn.textContent = "📤 Share"; downloadBtn.textContent = "💾 Save"; resolve(c); })
+              .catch((err) => { clearTimeout(timeout); reject(err); });
+          };
           if (typeof html2canvas === "undefined") {
             const s = document.createElement("script");
             s.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
             s.onload = cap;
-            s.onerror = reject;
+            s.onerror = () => { clearTimeout(timeout); reject(new Error("script load failed")); };
             document.head.appendChild(s);
           } else cap();
         });
       };
-      $("#shareBtn").onclick = () => {
-        doCapture().then((c) => {
-          c.toBlob((blob) => {
+      shareBtn.onclick = () => {
+        if (!captured) {
+          doCapture().then((c) => {
+            c.toBlob((blob) => {
+              const file = new File([blob], filename, { type: "image/png" });
+              if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                navigator.share({ files: [file], title: "Chill Out Games 2026" });
+              } else {
+                const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url);
+              }
+            });
+          }).catch(() => { shareBtn.textContent = "❌ Failed"; setTimeout(() => { shareBtn.textContent = "📤 Share"; captured = false; canvas = null; }, 2000); });
+        } else if (canvas) {
+          canvas.toBlob((blob) => {
             const file = new File([blob], filename, { type: "image/png" });
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
               navigator.share({ files: [file], title: "Chill Out Games 2026" });
             } else {
-              const url = URL.createObjectURL(blob);
-              const a = document.createElement("a");
-              a.href = url; a.download = filename; a.click();
-              URL.revokeObjectURL(url);
+              const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url);
             }
           });
-        }).catch(() => alert("Could not generate image. Download instead."));
+        }
       };
-      $("#downloadBtn").onclick = () => {
+      downloadBtn.onclick = () => {
         doCapture().then((c) => {
           c.toBlob((blob) => {
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url; a.download = filename; a.click();
-            URL.revokeObjectURL(url);
+            const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url);
           });
         });
       };
@@ -2049,7 +2188,7 @@
       openShareModal(`
         <div class="share-card" id="shareCard">
           <div class="share-medal">${medal}</div>
-          <div class="share-team-name">${escapeHtml(team.name)}</div>
+          <div class="share-team-name">${team.icon} ${escapeHtml(team.name)}</div>
           <div class="share-rank">Rank #${team.overall_rank} · ${team.total_points} pts</div>
           <div class="share-roster">${rosterHtml}</div>
           <div class="share-scores">${scoreCards}</div>
@@ -2064,7 +2203,7 @@
       openShareModal(`
         <div class="share-card swap-share-card" id="shareCard">
           <div style="font-size:2.5rem;position:relative;z-index:1;margin-bottom:0.25rem">🔄</div>
-          <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--orange);font-weight:800;position:relative;z-index:1">TRADE ALERT</div>
+          <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--red);font-weight:800;position:relative;z-index:1">TRADE ALERT</div>
           <div class="share-team-name" style="font-size:2.2rem;margin-top:0.5rem">${escapeHtml(swappedOut)}</div>
           <div style="position:relative;z-index:1;color:var(--muted);font-weight:600;margin:0.3rem 0 0.5rem">
             was benched by captain<br>
@@ -2072,7 +2211,7 @@
           </div>
           <div class="share-scores" style="flex-direction:column;align-items:center;gap:0.3rem">
             <div style="font-size:0.9rem;font-weight:700">→ ${escapeHtml(swappedIn)} steps in</div>
-            <div class="sh-score-wod" style="font-size:0.75rem">WOD ${wod} · ${escapeHtml(team.name)}</div>
+            <div class="sh-score-wod" style="font-size:0.75rem">WOD ${wod} · ${team.icon} ${escapeHtml(team.name)}</div>
           </div>
           <div class="share-footer" style="margin-top:1.2rem">Chill Out Games 2026</div>
         </div>
