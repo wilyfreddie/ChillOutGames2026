@@ -34,12 +34,12 @@
     },
     {
       "id": 4,
-      "name": "\ud83e\udd23 Thruster Disaster",
+      "name": "",
       "release_date": "2026-07-10",
       "released": false,
-      "format": "For Time",
-      "description": "\u2b06\ufe0f 4 Burpee Box Jump-Overs (24/20\")  \n\ud83c\udfcb\ufe0f 4 Barbell Thrusters @ 75/55 lbs  \n\u2b06\ufe0f 8 Burpee Box Jump-Overs (24/20\")  \n\ud83c\udfcb\ufe0f 8 Barbell Thrusters @ 75/55 lbs  \n\u2b06\ufe0f 12 Burpee Box Jump-Overs (24/20\")  \n\ud83c\udfcb\ufe0f 12 Barbell Thrusters @ 75/55 lbs",
-      "time_cap": "2:30 minutes"
+      "format": "",
+      "description": "",
+      "time_cap": ""
     }
   ],
   "teams": [
