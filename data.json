@@ -1,6 +1,9 @@
 {
   "competition": "Chill Out Games 2026",
   "next_wod_release": "2026-07-10T00:00:00",
+  "divisions": [
+    "Chill Out"
+  ],
   "wods": [
     {
       "id": 1,
@@ -8,78 +11,7 @@
       "release_date": "2026-06-19",
       "released": true,
       "format": "For Time",
-      "time_cap": "20 minutes",
-      "description": "5 paired movements separated by 400m team runs. Start with a partner wheelbarrow, then run, squat, run, jump rope, run, wall ball, run, burpee. All athletes must finish each movement before the team advances.",
-      "movements": [
-        {
-          "name": "Partner Wheelbarrow 30 meters",
-          "standards": [
-            "Athlete carrying the wheelbarrow may only hold the ankles of the wheelbarrow athlete.",
-            "Athlete's hands must start behind the line and go past the other line for the rep to count.",
-            "1 lap = 3m. 2 athletes working / 1 resting, switch however."
-          ]
-        },
-        {
-          "name": "Team Run 400 meters",
-          "standards": [
-            "Athletes may only start running once they've finished the previous movement.",
-            "The team must leave the start line at the same time.",
-            "The team doesn't have to finish at the same time, but all athletes must return to their lanes before starting the next movement."
-          ]
-        },
-        {
-          "name": "30 Team Squats",
-          "standards": [
-            "Athletes doing the squat may carry their teammate however and may switch anytime.",
-            "Must start standing tall with hips & knees locked out, squat with hips below parallel, then finish standing tall with hips & knees locked out."
-          ]
-        },
-        {
-          "name": "Team Run 400 meters",
-          "standards": [
-            "Repeat: same run rules as above."
-          ]
-        },
-        {
-          "name": "60 Team Single Unders",
-          "standards": [
-            "The rope must clearly pass below the feet of the jumping athlete for the rep to count.",
-            "Athletes may switch however."
-          ]
-        },
-        {
-          "name": "Team Run 400 meters",
-          "standards": [
-            "Repeat: same run rules as above."
-          ]
-        },
-        {
-          "name": "30 Partner Wall Balls @ 10 lbs",
-          "standards": [
-            "Athlete A starts standing tall holding the med ball in front of the shoulders.",
-            "Squat below parallel, extend knees & hips, throw the med ball over the pull-up bar.",
-            "If the med ball touches any part of the pull-up bar, it's a no rep.",
-            "If athlete B fails to catch and the ball drops, they must let it settle before picking it up (no bounce catch).",
-            "The team may switch however."
-          ]
-        },
-        {
-          "name": "Team Run 400 meters",
-          "standards": [
-            "Repeat: same run rules as above."
-          ]
-        },
-        {
-          "name": "30 Burpee over Partners",
-          "standards": [
-            "Athlete A performs burpee parallel to athlete B who holds a plank.",
-            "Chest & thighs must touch the floor, then jump over athlete B.",
-            "Standing tall before jumping is not required. Stepping during burpee is allowed.",
-            "Athlete B (plank) may raise/lower hips as long as only feet & forearms touch the floor.",
-            "The team may switch however."
-          ]
-        }
-      ]
+      "description": "5 paired movements separated by 400m team runs. Start with a partner wheelbarrow, then run, squat, run, jump rope, run, wall ball, run, burpee. All athletes must finish each movement before the team advances."
     },
     {
       "id": 2,
@@ -87,42 +19,7 @@
       "release_date": "2026-06-26",
       "released": true,
       "format": "3 Rounds for Time",
-      "time_cap": "12 minutes",
-      "description": "Three rounds of piggyback rides, worm cleans, synchronized knee raises, and worm push-ups. A true test of team coordination and trust.",
-      "movements": [
-        {
-          "name": "Piggyback Ride 200 feet",
-          "standards": [
-            "Athlete A carries athlete B piggyback style, start behind the line, walk/run past the cone.",
-            "If athlete B's foot touches the floor during the ride, it's a no rep — go back to the starting line.",
-            "1 lap = 10 feet. The team may switch however."
-          ]
-        },
-        {
-          "name": "15 Worm Cleans",
-          "standards": [
-            "The team carries the worm from ground to shoulders in one movement, locking out knees & hips.",
-            "May perform a muscle or power clean. The team may switch however."
-          ]
-        },
-        {
-          "name": "15 Synchro Hanging Knee Raises",
-          "standards": [
-            "Athletes A & B hang side by side with hips locked out and heels behind the bar.",
-            "Raise knees clearly above the hip crease at the same time. Any grip is permitted.",
-            "The team may switch however."
-          ]
-        },
-        {
-          "name": "10 Worm Push Ups",
-          "standards": [
-            "Team starts lying on the ground in a straight line with chest & hips touching the floor.",
-            "Each athlete's feet rest on the next athlete's shoulders.",
-            "Perform a push-up locking out elbows. The team does not have to push up at the same time, but elbows must be locked at the same time at one point.",
-            "The team may switch places anytime."
-          ]
-        }
-      ]
+      "description": "Three rounds of piggyback rides, worm cleans, synchronized knee raises, and worm push-ups. A true test of team coordination and trust."
     },
     {
       "id": 3,
@@ -130,219 +27,591 @@
       "release_date": "2026-07-03",
       "released": true,
       "format": "AMRAP",
-      "time_cap": "6:30 total",
-      "description": "Three 2-minute AMRAPs in sequence with short rest between. Total combined reps across all three movements determine your score.",
-      "movements": [
-        {
-          "name": "0:00 – 2:00 · DB Flat Bench Press @ 35/20 lbs",
-          "standards": [
-            "Athlete lies on a bench with feet on the floor, holding DBs in line with shoulders, elbows locked.",
-            "Lower DBs beside chest with one head touching chest/shoulders, then press back to start.",
-            "Hips may not rise off the bench. Feet may not rise off the floor."
-          ]
-        },
-        {
-          "name": "2:10 – 4:10 · Med Ball Feet Anchored Sit-ups @ 10/6 lbs",
-          "standards": [
-            "Athlete lies on the floor, feet anchored by DBs, shoulders, hips, and med ball touching the floor.",
-            "Perform a sit-up and tap the med ball on the DBs. Hips may not rise at any point.",
-            "1 rep per successful tap."
-          ]
-        },
-        {
-          "name": "4:20 – 6:30 · Russian Kettlebell Swings @ 24kg/16kg",
-          "standards": [
-            "Kettlebell may start on the floor for the 1st rep or every time you break.",
-            "Swing the KB behind the legs, extend knees & hips, swing KB clearly above the shoulders.",
-            "Elbows may bend during the swing."
-          ]
-        }
-      ]
+      "description": "Three 2-minute AMRAPs in sequence with short rest between. Total combined reps across all three movements determine your score."
     },
     {
       "id": 4,
       "name": "The Jumbo",
       "release_date": "2026-07-10",
-      "released": true,
+      "released": false,
       "format": "For Time",
-      "time_cap": "5 minutes",
-      "description": "A descending ladder of pull-ups paired with dumbbell reverse lunges. Fast and furious — 5 minutes to finish or hit the cap.",
-      "movements": [
-        {
-          "name": "20 – 16 – 8 Pull-Ups",
-          "standards": [
-            "Start from a dead hang with elbows & hips locked out.",
-            "Pull up with the chin clearly over the bar. Strict, kipping, or butterfly are allowed.",
-            "Heels must start behind the bar if performing a kip/butterfly. Any grip is permitted."
-          ]
-        },
-        {
-          "name": "20 – 16 – 8 Front-Racked DB Reverse Lunge Steps @ 50/35 lbs",
-          "standards": [
-            "Start standing tall with hips & knees locked out. DBs rest on top of shoulders/traps.",
-            "Perform a reverse lunge with the back knee touching the floor.",
-            "Return to start locking out the front knee & hip. Alternating legs is not required."
-          ]
-        }
-      ]
+      "description": "A descending ladder of pull-ups paired with dumbbell reverse lunges. Fast and furious \u2014 5 minutes to finish or hit the cap."
     }
   ],
   "teams": [
     {
       "id": "team_001",
       "name": "Victoria's Final DexCision",
-      "icon": "👑",
+      "division": "Chill Out",
       "captain": "Miguel Santos",
       "roster": {
-        "wod1": ["Miguel Santos", "Paolo Reyes", "Bianca Cruz", "Jessa Lim", "Carla Mercado", "Diego Flores"],
-        "wod2": ["Miguel Santos", "Paolo Reyes", "Lia Bautista", "Jessa Lim", "Carla Mercado", "Diego Flores"],
-        "wod3": ["Miguel Santos", "Paolo Reyes", "Lia Bautista", "Jessa Lim", "Tomas Sy", "Diego Flores"],
-        "wod4": ["Miguel Santos", "Paolo Reyes", "Lia Bautista", "Jessa Lim", "Tomas Sy", "Diego Flores"]
+        "wod1": [
+          "Miguel Santos",
+          "Paolo Reyes",
+          "Bianca Cruz",
+          "Jessa Lim",
+          "Carla Mercado",
+          "Diego Flores"
+        ],
+        "wod2": [
+          "Miguel Santos",
+          "Paolo Reyes",
+          "Jessa Lim",
+          "Carla Mercado",
+          "Diego Flores",
+          "Lia Bautista"
+        ],
+        "wod3": [
+          "Miguel Santos",
+          "Paolo Reyes",
+          "Jessa Lim",
+          "Diego Flores",
+          "Lia Bautista",
+          "Tomas Sy"
+        ],
+        "wod4": [
+          "Miguel Santos",
+          "Paolo Reyes",
+          "Jessa Lim",
+          "Diego Flores",
+          "Lia Bautista",
+          "Tomas Sy"
+        ]
       },
       "swaps": [
-        { "wod": 2, "swapped_out": "Bianca Cruz", "swapped_in": "Lia Bautista", "swapped_in_from_team": "Adobo Barbell Club" },
-        { "wod": 3, "swapped_out": "Carla Mercado", "swapped_in": "Tomas Sy", "swapped_in_from_team": "Pandesal Power" }
+        {
+          "wod": 2,
+          "swapped_out": "Bianca Cruz",
+          "swapped_in": "Lia Bautista",
+          "swapped_in_from_team": "External Roster"
+        },
+        {
+          "wod": 3,
+          "swapped_out": "Carla Mercado",
+          "swapped_in": "Tomas Sy",
+          "swapped_in_from_team": "External Roster"
+        }
       ],
       "scores": [
-        { "wod": 1, "score": "15:08", "rank": 2, "points": 95 },
-        { "wod": 2, "score": "7:30", "rank": 1, "points": 100 },
-        { "wod": 3, "score": "140 reps", "rank": 5, "points": 90 },
-        { "wod": 4, "score": "3:30", "rank": 3, "points": 85 }
-      ]
+        {
+          "wod": 1,
+          "score": "15:08",
+          "rank": 2,
+          "points": 95
+        },
+        {
+          "wod": 2,
+          "score": "07:30",
+          "rank": 1,
+          "points": 100
+        },
+        {
+          "wod": 3,
+          "score": "140 reps",
+          "rank": 5,
+          "points": 90
+        },
+        {
+          "wod": 4,
+          "score": "03:30",
+          "rank": 3,
+          "points": 85
+        }
+      ],
+      "total_points": 285,
+      "overall_rank": 7
     },
     {
       "id": "team_002",
       "name": "Alloutta Excuses",
-      "icon": "🤷",
+      "division": "Chill Out",
       "captain": "Carlo Dela Cruz",
       "roster": {
-        "wod1": ["Carlo Dela Cruz", "Mara Aquino", "Jolo Garcia", "Trina Gonzales", "Arman Cruz", "Lia Bautista"],
-        "wod2": ["Carlo Dela Cruz", "Mara Aquino", "Jolo Garcia", "Trina Gonzales", "Arman Cruz", "Camille Uy"],
-        "wod3": ["Carlo Dela Cruz", "Mara Aquino", "Jolo Garcia", "Trina Gonzales", "Arman Cruz", "Camille Uy"],
-        "wod4": ["Carlo Dela Cruz", "Mara Aquino", "Jolo Garcia", "Trina Gonzales", "Arman Cruz", "Camille Uy"]
+        "wod1": [
+          "Carlo Dela Cruz",
+          "Mara Aquino",
+          "Jolo Garcia",
+          "Trina Gonzales",
+          "Arman Cruz",
+          "Lia Bautista"
+        ],
+        "wod2": [
+          "Carlo Dela Cruz",
+          "Mara Aquino",
+          "Jolo Garcia",
+          "Trina Gonzales",
+          "Arman Cruz",
+          "Camille Uy"
+        ],
+        "wod3": [
+          "Carlo Dela Cruz",
+          "Mara Aquino",
+          "Jolo Garcia",
+          "Trina Gonzales",
+          "Arman Cruz",
+          "Camille Uy"
+        ],
+        "wod4": [
+          "Carlo Dela Cruz",
+          "Mara Aquino",
+          "Jolo Garcia",
+          "Trina Gonzales",
+          "Arman Cruz",
+          "Camille Uy"
+        ]
       },
       "swaps": [
-        { "wod": 2, "swapped_out": "Lia Bautista", "swapped_in": "Camille Uy", "swapped_in_from_team": "Mabuhay Metcon" }
+        {
+          "wod": 2,
+          "swapped_out": "Lia Bautista",
+          "swapped_in": "Camille Uy",
+          "swapped_in_from_team": "External Roster"
+        }
       ],
       "scores": [
-        { "wod": 1, "score": "15:45", "rank": 3, "points": 91 },
-        { "wod": 2, "score": "8:15", "rank": 2, "points": 91 },
-        { "wod": 3, "score": "152 reps", "rank": 2, "points": 97 },
-        { "wod": 4, "score": "3:15", "rank": 2, "points": 91 }
-      ]
+        {
+          "wod": 1,
+          "score": "15:45",
+          "rank": 3,
+          "points": 91
+        },
+        {
+          "wod": 2,
+          "score": "08:15",
+          "rank": 2,
+          "points": 91
+        },
+        {
+          "wod": 3,
+          "score": "152 reps",
+          "rank": 2,
+          "points": 97
+        },
+        {
+          "wod": 4,
+          "score": "03:15",
+          "rank": 2,
+          "points": 91
+        }
+      ],
+      "total_points": 279,
+      "overall_rank": 6
     },
     {
       "id": "team_003",
       "name": "Team D.I.D. it!",
-      "icon": "💪",
+      "division": "Chill Out",
       "captain": "Nico Villanueva",
       "roster": {
-        "wod1": ["Nico Villanueva", "Rafa Mendoza", "Sofia Navarro", "Enzo Ramos", "Camille Uy", "Tessa Cruz"],
-        "wod2": ["Nico Villanueva", "Rafa Mendoza", "Sofia Navarro", "Enzo Ramos", "Bianca Cruz", "Tessa Cruz"],
-        "wod3": ["Nico Villanueva", "Rafa Mendoza", "Sofia Navarro", "Grace Villanueva", "Bianca Cruz", "Tessa Cruz"],
-        "wod4": ["Nico Villanueva", "Rafa Mendoza", "Sofia Navarro", "Grace Villanueva", "Bianca Cruz", "Gab Lim"]
+        "wod1": [
+          "Nico Villanueva",
+          "Rafa Mendoza",
+          "Sofia Navarro",
+          "Enzo Ramos",
+          "Camille Uy",
+          "Tessa Cruz"
+        ],
+        "wod2": [
+          "Nico Villanueva",
+          "Rafa Mendoza",
+          "Sofia Navarro",
+          "Enzo Ramos",
+          "Tessa Cruz",
+          "Bianca Cruz"
+        ],
+        "wod3": [
+          "Nico Villanueva",
+          "Rafa Mendoza",
+          "Sofia Navarro",
+          "Tessa Cruz",
+          "Bianca Cruz",
+          "Grace Villanueva"
+        ],
+        "wod4": [
+          "Nico Villanueva",
+          "Rafa Mendoza",
+          "Sofia Navarro",
+          "Bianca Cruz",
+          "Grace Villanueva",
+          "Gab Lim"
+        ]
       },
       "swaps": [
-        { "wod": 2, "swapped_out": "Camille Uy", "swapped_in": "Bianca Cruz", "swapped_in_from_team": "Tinikling Titans" },
-        { "wod": 3, "swapped_out": "Enzo Ramos", "swapped_in": "Grace Villanueva", "swapped_in_from_team": "Sinag Squad" },
-        { "wod": 4, "swapped_out": "Tessa Cruz", "swapped_in": "Gab Lim", "swapped_in_from_team": "Mayon Muscle" }
+        {
+          "wod": 2,
+          "swapped_out": "Camille Uy",
+          "swapped_in": "Bianca Cruz",
+          "swapped_in_from_team": "External Roster"
+        },
+        {
+          "wod": 3,
+          "swapped_out": "Enzo Ramos",
+          "swapped_in": "Grace Villanueva",
+          "swapped_in_from_team": "External Roster"
+        },
+        {
+          "wod": 4,
+          "swapped_out": "Tessa Cruz",
+          "swapped_in": "Gab Lim",
+          "swapped_in_from_team": "External Roster"
+        }
       ],
       "scores": [
-        { "wod": 1, "score": "16:30", "rank": 4, "points": 87 },
-        { "wod": 2, "score": "9:50", "rank": 5, "points": 76 },
-        { "wod": 3, "score": "144 reps", "rank": 4, "points": 92 },
-        { "wod": 4, "score": "4:10", "rank": 5, "points": 71 }
-      ]
+        {
+          "wod": 1,
+          "score": "16:30",
+          "rank": 4,
+          "points": 87
+        },
+        {
+          "wod": 2,
+          "score": "09:50",
+          "rank": 5,
+          "points": 76
+        },
+        {
+          "wod": 3,
+          "score": "144 reps",
+          "rank": 4,
+          "points": 92
+        },
+        {
+          "wod": 4,
+          "score": "04:10",
+          "rank": 5,
+          "points": 71
+        }
+      ],
+      "total_points": 255,
+      "overall_rank": 4
     },
     {
       "id": "team_004",
       "name": "Timtation ni ate Rona ft. Ken",
-      "icon": "🎯",
+      "division": "Chill Out",
       "captain": "Andre Torres",
       "roster": {
-        "wod1": ["Andre Torres", "Kyla Mariano", "Gab Lim", "Sam Bautista", "Iya Mercado", "Benjie Lao"],
-        "wod2": ["Andre Torres", "Kyla Mariano", "Gab Lim", "Sam Bautista", "Iya Mercado", "Benjie Lao"],
-        "wod3": ["Andre Torres", "Kyla Mariano", "Gab Lim", "Enzo Ramos", "Iya Mercado", "Benjie Lao"],
-        "wod4": ["Andre Torres", "Kyla Mariano", "Tessa Cruz", "Enzo Ramos", "Iya Mercado", "Benjie Lao"]
+        "wod1": [
+          "Andre Torres",
+          "Kyla Mariano",
+          "Gab Lim",
+          "Sam Bautista",
+          "Iya Mercado",
+          "Benjie Lao"
+        ],
+        "wod2": [
+          "Andre Torres",
+          "Kyla Mariano",
+          "Gab Lim",
+          "Sam Bautista",
+          "Iya Mercado",
+          "Benjie Lao"
+        ],
+        "wod3": [
+          "Andre Torres",
+          "Kyla Mariano",
+          "Gab Lim",
+          "Iya Mercado",
+          "Benjie Lao",
+          "Enzo Ramos"
+        ],
+        "wod4": [
+          "Andre Torres",
+          "Kyla Mariano",
+          "Iya Mercado",
+          "Benjie Lao",
+          "Enzo Ramos",
+          "Tessa Cruz"
+        ]
       },
       "swaps": [
-        { "wod": 3, "swapped_out": "Sam Bautista", "swapped_in": "Enzo Ramos", "swapped_in_from_team": "Mabuhay Metcon" },
-        { "wod": 4, "swapped_out": "Gab Lim", "swapped_in": "Tessa Cruz", "swapped_in_from_team": "Mabuhay Metcon" }
+        {
+          "wod": 3,
+          "swapped_out": "Sam Bautista",
+          "swapped_in": "Enzo Ramos",
+          "swapped_in_from_team": "External Roster"
+        },
+        {
+          "wod": 4,
+          "swapped_out": "Gab Lim",
+          "swapped_in": "Tessa Cruz",
+          "swapped_in_from_team": "External Roster"
+        }
       ],
       "scores": [
-        { "wod": 1, "score": "19:45", "rank": 7, "points": 73 },
-        { "wod": 2, "score": "8:45", "rank": 3, "points": 86 },
-        { "wod": 3, "score": "135 reps", "rank": 6, "points": 87 },
-        { "wod": 4, "score": "3:50", "rank": 4, "points": 77 }
-      ]
+        {
+          "wod": 1,
+          "score": "19:45",
+          "rank": 7,
+          "points": 73
+        },
+        {
+          "wod": 2,
+          "score": "08:45",
+          "rank": 3,
+          "points": 86
+        },
+        {
+          "wod": 3,
+          "score": "135 reps",
+          "rank": 6,
+          "points": 87
+        },
+        {
+          "wod": 4,
+          "score": "03:50",
+          "rank": 4,
+          "points": 77
+        }
+      ],
+      "total_points": 246,
+      "overall_rank": 2
     },
     {
       "id": "team_005",
       "name": "Weightlifting fairies",
-      "icon": "🧚",
+      "division": "Chill Out",
       "captain": "Luis Manalo",
       "roster": {
-        "wod1": ["Luis Manalo", "Anton De Leon", "Clara Tan", "Ella Santos", "Grace Villanueva", "Ramon Lee"],
-        "wod2": ["Luis Manalo", "Anton De Leon", "Clara Tan", "Ella Santos", "Grace Villanueva", "Ramon Lee"],
-        "wod3": ["Luis Manalo", "Anton De Leon", "Clara Tan", "Ella Santos", "Sam Bautista", "Ramon Lee"],
-        "wod4": ["Luis Manalo", "Anton De Leon", "Clara Tan", "Ella Santos", "Sam Bautista", "Ramon Lee"]
+        "wod1": [
+          "Luis Manalo",
+          "Anton De Leon",
+          "Clara Tan",
+          "Ella Santos",
+          "Grace Villanueva",
+          "Ramon Lee"
+        ],
+        "wod2": [
+          "Luis Manalo",
+          "Anton De Leon",
+          "Clara Tan",
+          "Ella Santos",
+          "Grace Villanueva",
+          "Ramon Lee"
+        ],
+        "wod3": [
+          "Luis Manalo",
+          "Anton De Leon",
+          "Clara Tan",
+          "Ella Santos",
+          "Ramon Lee",
+          "Sam Bautista"
+        ],
+        "wod4": [
+          "Luis Manalo",
+          "Anton De Leon",
+          "Clara Tan",
+          "Ella Santos",
+          "Ramon Lee",
+          "Sam Bautista"
+        ]
       },
       "swaps": [
-        { "wod": 3, "swapped_out": "Grace Villanueva", "swapped_in": "Sam Bautista", "swapped_in_from_team": "Mayon Muscle" }
+        {
+          "wod": 3,
+          "swapped_out": "Grace Villanueva",
+          "swapped_in": "Sam Bautista",
+          "swapped_in_from_team": "External Roster"
+        }
       ],
       "scores": [
-        { "wod": 1, "score": "14:22", "rank": 1, "points": 100 },
-        { "wod": 2, "score": "9:15", "rank": 4, "points": 81 },
-        { "wod": 3, "score": "130 reps", "rank": 7, "points": 83 },
-        { "wod": 4, "score": "2:58", "rank": 1, "points": 100 }
-      ]
+        {
+          "wod": 1,
+          "score": "14:22",
+          "rank": 1,
+          "points": 100
+        },
+        {
+          "wod": 2,
+          "score": "09:15",
+          "rank": 4,
+          "points": 81
+        },
+        {
+          "wod": 3,
+          "score": "130 reps",
+          "rank": 7,
+          "points": 83
+        },
+        {
+          "wod": 4,
+          "score": "02:58",
+          "rank": 1,
+          "points": 100
+        }
+      ],
+      "total_points": 264,
+      "overall_rank": 5
     },
     {
       "id": "team_006",
       "name": "KAZAM",
-      "icon": "⚡",
+      "division": "Chill Out",
       "captain": "Josefina Reyes",
       "roster": {
-        "wod1": ["Josefina Reyes", "Bryan Ong", "Nina Soriano", "Miko Chan", "Iris Santiago", "Tomas Sy"],
-        "wod2": ["Josefina Reyes", "Bryan Ong", "Reina Castillo", "Miko Chan", "Iris Santiago", "Tomas Sy"],
-        "wod3": ["Josefina Reyes", "Bryan Ong", "Reina Castillo", "Miko Chan", "Iris Santiago", "Carla Mercado"],
-        "wod4": ["Josefina Reyes", "Bryan Ong", "Reina Castillo", "Miko Chan", "Iris Santiago", "Marco Padilla"]
+        "wod1": [
+          "Josefina Reyes",
+          "Bryan Ong",
+          "Nina Soriano",
+          "Miko Chan",
+          "Iris Santiago",
+          "Tomas Sy"
+        ],
+        "wod2": [
+          "Josefina Reyes",
+          "Bryan Ong",
+          "Miko Chan",
+          "Iris Santiago",
+          "Tomas Sy",
+          "Reina Castillo"
+        ],
+        "wod3": [
+          "Josefina Reyes",
+          "Bryan Ong",
+          "Miko Chan",
+          "Iris Santiago",
+          "Reina Castillo",
+          "Carla Mercado"
+        ],
+        "wod4": [
+          "Josefina Reyes",
+          "Bryan Ong",
+          "Miko Chan",
+          "Iris Santiago",
+          "Reina Castillo",
+          "Marco Padilla"
+        ]
       },
       "swaps": [
-        { "wod": 2, "swapped_out": "Nina Soriano", "swapped_in": "Reina Castillo", "swapped_in_from_team": "Halo-Halo Hustle" },
-        { "wod": 3, "swapped_out": "Tomas Sy", "swapped_in": "Carla Mercado", "swapped_in_from_team": "Tinikling Titans" },
-        { "wod": 4, "swapped_out": "Carla Mercado", "swapped_in": "Marco Padilla", "swapped_in_from_team": "Halo-Halo Hustle" }
+        {
+          "wod": 2,
+          "swapped_out": "Nina Soriano",
+          "swapped_in": "Reina Castillo",
+          "swapped_in_from_team": "External Roster"
+        },
+        {
+          "wod": 3,
+          "swapped_out": "Tomas Sy",
+          "swapped_in": "Carla Mercado",
+          "swapped_in_from_team": "External Roster"
+        },
+        {
+          "wod": 4,
+          "swapped_out": "Carla Mercado",
+          "swapped_in": "Marco Padilla",
+          "swapped_in_from_team": "External Roster"
+        }
       ],
       "scores": [
-        { "wod": 1, "score": "17:15", "rank": 5, "points": 83 },
-        { "wod": 2, "score": "10:30", "rank": 6, "points": 71 },
-        { "wod": 3, "score": "156 reps", "rank": 1, "points": 100 },
-        { "wod": 4, "score": "4:50", "rank": 7, "points": 61 }
-      ]
+        {
+          "wod": 1,
+          "score": "17:15",
+          "rank": 5,
+          "points": 83
+        },
+        {
+          "wod": 2,
+          "score": "10:30",
+          "rank": 6,
+          "points": 71
+        },
+        {
+          "wod": 3,
+          "score": "156 reps",
+          "rank": 1,
+          "points": 100
+        },
+        {
+          "wod": 4,
+          "score": "04:50",
+          "rank": 7,
+          "points": 61
+        }
+      ],
+      "total_points": 254,
+      "overall_rank": 3
     },
     {
       "id": "team_007",
       "name": "Winx club",
-      "icon": "✨",
+      "division": "Chill Out",
       "captain": "Alvin Magtibay",
       "roster": {
-        "wod1": ["Alvin Magtibay", "Paula Garcia", "Reina Castillo", "Marco Padilla", "Jun Navarro", "Kenji Ramos"],
-        "wod2": ["Alvin Magtibay", "Paula Garcia", "Nina Soriano", "Marco Padilla", "Jun Navarro", "Kenji Ramos"],
-        "wod3": ["Alvin Magtibay", "Paula Garcia", "Nina Soriano", "Marco Padilla", "Jun Navarro", "Kenji Ramos"],
-        "wod4": ["Alvin Magtibay", "Paula Garcia", "Nina Soriano", "Carla Mercado", "Jun Navarro", "Kenji Ramos"]
+        "wod1": [
+          "Alvin Magtibay",
+          "Paula Garcia",
+          "Reina Castillo",
+          "Marco Padilla",
+          "Jun Navarro",
+          "Kenji Ramos"
+        ],
+        "wod2": [
+          "Alvin Magtibay",
+          "Paula Garcia",
+          "Marco Padilla",
+          "Jun Navarro",
+          "Kenji Ramos",
+          "Nina Soriano"
+        ],
+        "wod3": [
+          "Alvin Magtibay",
+          "Paula Garcia",
+          "Marco Padilla",
+          "Jun Navarro",
+          "Kenji Ramos",
+          "Nina Soriano"
+        ],
+        "wod4": [
+          "Alvin Magtibay",
+          "Paula Garcia",
+          "Jun Navarro",
+          "Kenji Ramos",
+          "Nina Soriano",
+          "Carla Mercado"
+        ]
       },
       "swaps": [
-        { "wod": 2, "swapped_out": "Reina Castillo", "swapped_in": "Nina Soriano", "swapped_in_from_team": "Pandesal Power" },
-        { "wod": 4, "swapped_out": "Marco Padilla", "swapped_in": "Carla Mercado", "swapped_in_from_team": "Pandesal Power" }
+        {
+          "wod": 2,
+          "swapped_out": "Reina Castillo",
+          "swapped_in": "Nina Soriano",
+          "swapped_in_from_team": "External Roster"
+        },
+        {
+          "wod": 4,
+          "swapped_out": "Marco Padilla",
+          "swapped_in": "Carla Mercado",
+          "swapped_in_from_team": "External Roster"
+        }
       ],
       "scores": [
-        { "wod": 1, "score": "18:30", "rank": 6, "points": 78 },
-        { "wod": 2, "score": "11:15", "rank": 7, "points": 67 },
-        { "wod": 3, "score": "148 reps", "rank": 3, "points": 95 },
-        { "wod": 4, "score": "4:30", "rank": 6, "points": 66 }
-      ]
+        {
+          "wod": 1,
+          "score": "18:30",
+          "rank": 6,
+          "points": 78
+        },
+        {
+          "wod": 2,
+          "score": "11:15",
+          "rank": 7,
+          "points": 67
+        },
+        {
+          "wod": 3,
+          "score": "148 reps",
+          "rank": 3,
+          "points": 95
+        },
+        {
+          "wod": 4,
+          "score": "04:30",
+          "rank": 6,
+          "points": 66
+        }
+      ],
+      "total_points": 240,
+      "overall_rank": 1
     }
   ]
 }
-
-
