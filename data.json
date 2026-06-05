@@ -7,35 +7,39 @@
   "wods": [
     {
       "id": 1,
-      "name": "The Gauntlet",
+      "name": "\ud83d\ude05 Wheelbarrow Wipeout",
       "release_date": "2026-06-19",
       "released": true,
       "format": "For Time",
-      "description": "5 paired movements separated by 400m team runs. Start with a partner wheelbarrow, then run, squat, run, jump rope, run, wall ball, run, burpee. All athletes must finish each movement before the team advances."
+      "description": "\ud83d\udd25 Partner Wheelbarrow \u2013 30m  \n\ud83c\udfc3 Team Run \u2013 400m  \n\ud83d\udfe6 Team Squats \u2013 30 reps  \n\ud83c\udfc3 Team Run \u2013 400m  \n\ud83d\udd17 Team Single Unders \u2013 60 reps  \n\ud83c\udfc3 Team Run \u2013 400m  \n\ud83c\udfaf Partner Wall Balls \u2013 30 reps",
+      "time_cap": "20 minutes"
     },
     {
       "id": 2,
-      "name": "The Worm",
+      "name": "\ud83e\udd23 Piggyback Panic\u201d",
       "release_date": "2026-06-26",
       "released": true,
       "format": "3 Rounds for Time",
-      "description": "Three rounds of piggyback rides, worm cleans, synchronized knee raises, and worm push-ups. A true test of team coordination and trust."
+      "description": "\ud83d\udc37 Piggyback Ride \u2013 200 ft  \n\ud83d\udcaa Worm Cleans \u2013 15 reps  \n\ud83d\udd17 Synchro Hanging Knee Raises \u2013 15 reps  \n\ud83d\udce6 Worm Push Ups \u2013 10 reps",
+      "time_cap": "12 minutes"
     },
     {
       "id": 3,
-      "name": "Triple Threat",
+      "name": "\ud83d\ude02 Snatch Attack",
       "release_date": "2026-07-03",
       "released": true,
       "format": "AMRAP",
-      "description": "Three 2-minute AMRAPs in sequence with short rest between. Total combined reps across all three movements determine your score."
+      "description": "\ud83c\udfcb\ufe0f 24 Dumbbell Snatches @ 30/20 lbs  \n\ud83d\udce6 24 Dumbbell Box Step-Overs (20\") @ 30/20 lbs  \n\ud83c\udfcb\ufe0f 16 Dumbbell Snatches @ 30/20 lbs  \n\ud83d\udce6 16 Dumbbell Box Step-Overs (20\") @ 30/20 lbs  \n\ud83c\udfcb\ufe0f 8 Dumbbell Snatches @ 30/20 lbs  \n\ud83d\udce6 8 Dumbbell Box Step-Overs (20\") @ 30/20 lbs",
+      "time_cap": "5 minutes"
     },
     {
       "id": 4,
-      "name": "The Jumbo",
+      "name": "\ud83e\udd23 Thruster Disaster",
       "release_date": "2026-07-10",
       "released": false,
       "format": "For Time",
-      "description": "A descending ladder of pull-ups paired with dumbbell reverse lunges. Fast and furious \u2014 5 minutes to finish or hit the cap."
+      "description": "\u2b06\ufe0f 4 Burpee Box Jump-Overs (24/20\")  \n\ud83c\udfcb\ufe0f 4 Barbell Thrusters @ 75/55 lbs  \n\u2b06\ufe0f 8 Burpee Box Jump-Overs (24/20\")  \n\ud83c\udfcb\ufe0f 8 Barbell Thrusters @ 75/55 lbs  \n\u2b06\ufe0f 12 Burpee Box Jump-Overs (24/20\")  \n\ud83c\udfcb\ufe0f 12 Barbell Thrusters @ 75/55 lbs",
+      "time_cap": "2:30 minutes"
     }
   ],
   "teams": [
@@ -113,9 +117,9 @@
         },
         {
           "wod": 4,
-          "score": "03:30",
-          "rank": 3,
-          "points": 85
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 285,
@@ -189,9 +193,9 @@
         },
         {
           "wod": 4,
-          "score": "03:15",
-          "rank": 2,
-          "points": 91
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 279,
@@ -277,9 +281,9 @@
         },
         {
           "wod": 4,
-          "score": "04:10",
-          "rank": 5,
-          "points": 71
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 255,
@@ -359,9 +363,9 @@
         },
         {
           "wod": 4,
-          "score": "03:50",
-          "rank": 4,
-          "points": 77
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 246,
@@ -435,9 +439,9 @@
         },
         {
           "wod": 4,
-          "score": "02:58",
-          "rank": 1,
-          "points": 100
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 264,
@@ -523,9 +527,9 @@
         },
         {
           "wod": 4,
-          "score": "04:50",
-          "rank": 7,
-          "points": 61
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 254,
@@ -605,9 +609,9 @@
         },
         {
           "wod": 4,
-          "score": "04:30",
-          "rank": 6,
-          "points": 66
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 240,
