@@ -11,7 +11,8 @@
       "release_date": "2026-06-19",
       "released": true,
       "format": "For Time",
-      "description": "5 paired movements separated by 400m team runs. Start with a partner wheelbarrow, then run, squat, run, jump rope, run, wall ball, run, burpee. All athletes must finish each movement before the team advances."
+      "description": "5 paired movements separated by 400m team runs. Start with a partner wheelbarrow, then run, squat, run, jump rope, run, wall ball, run, burpee. All athletes must finish each movement before the team advances.",
+      "time_cap": "20 minutes"
     },
     {
       "id": 2,
@@ -19,7 +20,8 @@
       "release_date": "2026-06-26",
       "released": true,
       "format": "3 Rounds for Time",
-      "description": "Three rounds of piggyback rides, worm cleans, synchronized knee raises, and worm push-ups. A true test of team coordination and trust."
+      "description": "Three rounds of piggyback rides, worm cleans, synchronized knee raises, and worm push-ups. A true test of team coordination and trust.",
+      "time_cap": "12 minutes"
     },
     {
       "id": 3,
@@ -27,7 +29,8 @@
       "release_date": "2026-07-03",
       "released": true,
       "format": "AMRAP",
-      "description": "Three 2-minute AMRAPs in sequence with short rest between. Total combined reps across all three movements determine your score."
+      "description": "Three 2-minute AMRAPs in sequence with short rest between. Total combined reps across all three movements determine your score.",
+      "time_cap": "6:30 total"
     },
     {
       "id": 4,
@@ -35,7 +38,8 @@
       "release_date": "2026-07-10",
       "released": false,
       "format": "For Time",
-      "description": "A descending ladder of pull-ups paired with dumbbell reverse lunges. Fast and furious \u2014 5 minutes to finish or hit the cap."
+      "description": "A descending ladder of pull-ups paired with dumbbell reverse lunges. Fast and furious \u2014 5 minutes to finish or hit the cap.",
+      "time_cap": "5 minutes"
     }
   ],
   "teams": [
@@ -113,9 +117,9 @@
         },
         {
           "wod": 4,
-          "score": "03:30",
-          "rank": 3,
-          "points": 85
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 285,
@@ -189,9 +193,9 @@
         },
         {
           "wod": 4,
-          "score": "03:15",
-          "rank": 2,
-          "points": 91
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 279,
@@ -277,9 +281,9 @@
         },
         {
           "wod": 4,
-          "score": "04:10",
-          "rank": 5,
-          "points": 71
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 255,
@@ -359,9 +363,9 @@
         },
         {
           "wod": 4,
-          "score": "03:50",
-          "rank": 4,
-          "points": 77
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 246,
@@ -435,9 +439,9 @@
         },
         {
           "wod": 4,
-          "score": "02:58",
-          "rank": 1,
-          "points": 100
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 264,
@@ -523,9 +527,9 @@
         },
         {
           "wod": 4,
-          "score": "04:50",
-          "rank": 7,
-          "points": 61
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 254,
@@ -605,9 +609,9 @@
         },
         {
           "wod": 4,
-          "score": "04:30",
-          "rank": 6,
-          "points": 66
+          "score": null,
+          "rank": null,
+          "points": null
         }
       ],
       "total_points": 240,
