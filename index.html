@@ -1807,7 +1807,7 @@
               <div class="wod-meta">
                 <span class="pill">${formatDate(wod.release_date)}</span>
                 <span class="pill">${escapeHtml(wod.format)}</span>
-                <span class="pill" style="border-color:rgba(235,2,21,0.4);color:var(--red)">${escapeHtml(wod.time_cap || "")}</span>
+                ${wod.time_cap ? `<span class="pill" style="border-color:rgba(235,2,21,0.4);color:var(--red)">${escapeHtml(wod.time_cap)}</span>` : ""}
               </div>
               <p>${escapeHtml(wod.description)}</p>
               ${movements ? `<div class="movements">${movements}</div>` : ""}
