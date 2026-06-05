@@ -22,7 +22,13 @@ jobs:
 
       - name: Build data.json from Google Sheets CSV
         env:
-          SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          ROSTER_CSV_URL: ${{ secrets.ROSTER_CSV_URL }}
+          SWAPS_CSV_URL: ${{ secrets.SWAPS_CSV_URL }}
+          WOD_INFO_CSV_URL: ${{ secrets.WOD_INFO_CSV_URL }}
+          WOD_1_CSV_URL: ${{ secrets.WOD_1_CSV_URL }}
+          WOD_2_CSV_URL: ${{ secrets.WOD_2_CSV_URL }}
+          WOD_3_CSV_URL: ${{ secrets.WOD_3_CSV_URL }}
+          WOD_4_CSV_URL: ${{ secrets.WOD_4_CSV_URL }}
         run: |
           python - <<'PY'
           import csv
@@ -33,17 +39,69 @@ jobs:
           import urllib.request
           from collections import defaultdict
 
-          SHEET_ID = os.environ["SHEET_ID"]
-          SHEETS = ["Roster", "Swaps", "WOD_Info", "WOD_1", "WOD_2", "WOD_3", "WOD_4"]
+          DEFAULT_URLS = {
+              "Roster": "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8SD3nbpkT_ECrdyqXVI31C1mMHb2MM_nd_L09fmV9Z49kAO_OaKFOSjEY1srqIkQ7bjuRYqgOLvz0/pub?gid=1802066284&single=true&output=csv",
+              "Swaps": "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8SD3nbpkT_ECrdyqXVI31C1mMHb2MM_nd_L09fmV9Z49kAO_OaKFOSjEY1srqIkQ7bjuRYqgOLvz0/pub?gid=922568610&single=true&output=csv",
+              "WOD_Info": "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8SD3nbpkT_ECrdyqXVI31C1mMHb2MM_nd_L09fmV9Z49kAO_OaKFOSjEY1srqIkQ7bjuRYqgOLvz0/pub?gid=1184394579&single=true&output=csv",
+              "WOD_1": "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8SD3nbpkT_ECrdyqXVI31C1mMHb2MM_nd_L09fmV9Z49kAO_OaKFOSjEY1srqIkQ7bjuRYqgOLvz0/pub?gid=362711100&single=true&output=csv",
+              "WOD_2": "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8SD3nbpkT_ECrdyqXVI31C1mMHb2MM_nd_L09fmV9Z49kAO_OaKFOSjEY1srqIkQ7bjuRYqgOLvz0/pub?gid=1772215034&single=true&output=csv",
+              "WOD_3": "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8SD3nbpkT_ECrdyqXVI31C1mMHb2MM_nd_L09fmV9Z49kAO_OaKFOSjEY1srqIkQ7bjuRYqgOLvz0/pub?gid=720613385&single=true&output=csv",
+              "WOD_4": "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8SD3nbpkT_ECrdyqXVI31C1mMHb2MM_nd_L09fmV9Z49kAO_OaKFOSjEY1srqIkQ7bjuRYqgOLvz0/pubhtml?gid=93392467&single=true",
+          }
 
-          def fetch_csv(sheet_name):
-              encoded = urllib.parse.quote(sheet_name)
-              url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={encoded}"
+          URL_ENV = {
+              "Roster": "ROSTER_CSV_URL",
+              "Swaps": "SWAPS_CSV_URL",
+              "WOD_Info": "WOD_INFO_CSV_URL",
+              "WOD_1": "WOD_1_CSV_URL",
+              "WOD_2": "WOD_2_CSV_URL",
+              "WOD_3": "WOD_3_CSV_URL",
+              "WOD_4": "WOD_4_CSV_URL",
+          }
+
+          OPTIONAL_SHEETS = {"Swaps", "WOD_3", "WOD_4"}
+
+          def normalize_csv_url(url):
+              if not url:
+                  return ""
+              parsed = urllib.parse.urlparse(url)
+              if "output=csv" in parsed.query:
+                  return url
+              if "/pubhtml" in parsed.path and "gid=" in parsed.query:
+                  base = url.split("/pubhtml", 1)[0] + "/pub"
+                  gid = urllib.parse.parse_qs(parsed.query).get("gid", [""])[0]
+                  if gid:
+                      return f"{base}?gid={gid}&single=true&output=csv"
+              return url
+
+          def fetch_csv(url):
               with urllib.request.urlopen(url) as response:
                   text = response.read().decode("utf-8-sig")
               return list(csv.DictReader(io.StringIO(text)))
 
-          tables = {name: fetch_csv(name) for name in SHEETS}
+          tables = {}
+          for sheet_name, env_name in URL_ENV.items():
+              url = os.getenv(env_name, "").strip() or DEFAULT_URLS[sheet_name]
+              url = normalize_csv_url(url)
+              if not url:
+                  tables[sheet_name] = []
+                  continue
+              try:
+                  tables[sheet_name] = fetch_csv(url)
+              except Exception as error:
+                  if sheet_name in OPTIONAL_SHEETS:
+                      print(f"Warning: could not fetch {sheet_name} ({error}); continuing with empty table")
+                      tables[sheet_name] = []
+                  else:
+                      raise
+
+          def parse_int(value):
+              if value is None:
+                  return None
+              text = str(value).strip()
+              if not text:
+                  return None
+              return int(float(text))
 
           teams = {}
           roster_by_team = defaultdict(list)
@@ -101,7 +159,9 @@ jobs:
           wods = []
           released_wods = []
           for row in tables["WOD_Info"]:
-              wod_id = int(row["wod_id"])
+              wod_id = parse_int(row.get("wod_id"))
+              if wod_id is None:
+                  continue
               released = row["released"].strip().upper() == "TRUE"
               if released:
                   released_wods.append(wod_id)
@@ -114,13 +174,18 @@ jobs:
                   "description": row["description"].strip(),
               })
 
-          for wod in range(1, 5):
-              rows = {row["team_id"].strip(): row for row in tables[f"WOD_{wod}"] if row.get("team_id")}
+          if wods:
+              wod_ids = sorted({wod["id"] for wod in wods})
+          else:
+              wod_ids = [1, 2, 3, 4]
+
+          for wod in wod_ids:
+              rows = {row["team_id"].strip(): row for row in tables.get(f"WOD_{wod}", []) if row.get("team_id")}
               for team_id, team in teams.items():
                   row = rows.get(team_id, {})
                   score = row.get("score", "").strip() or None
-                  rank = int(row["rank"]) if row.get("rank", "").strip() else None
-                  points = int(row["points"]) if row.get("points", "").strip() else None
+                  rank = parse_int(row.get("rank"))
+                  points = parse_int(row.get("points"))
                   team["scores"].append({"wod": wod, "score": score, "rank": rank, "points": points})
 
           divisions = sorted({team["division"] for team in teams.values()})
