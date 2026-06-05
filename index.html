@@ -1544,7 +1544,7 @@
         return `
           <article class="podium-card ${rankClass}" data-place="${team.overall_rank}">
             <div class="podium-medal">${medals[team.overall_rank - 1]}</div>
-            <div class="podium-name">${team.icon} ${escapeHtml(team.name)}</div>
+            <div class="podium-name">${teamIcon(team.name)} ${escapeHtml(team.name)}</div>
             <div class="podium-points">${team.total_points} pts <span class="muted">after ${latestReleasedWod()?.name || "WOD"}</span></div>
             ${renderMomentum(team)}
           </article>
@@ -1570,7 +1570,7 @@
             <div class="leader-main">
               <div class="rank">${medal}</div>
               <div>
-                <div class="team-name">${team.icon} ${escapeHtml(team.name)}${swapAlert}</div>
+                <div class="team-name">${teamIcon(team.name)} ${escapeHtml(team.name)}${swapAlert}</div>
                 ${renderMomentum(team)}
               </div>
               <div class="points"><strong>${team.total_points}</strong><span class="muted">points</span></div>
@@ -1701,7 +1701,7 @@
               <button class="team-toggle" type="button" aria-expanded="false">
                 <div class="card-row">
                   <div>
-                    <h3 class="team-name" style="font-size:1.1rem;margin:0">${team.icon} ${escapeHtml(team.name)}</h3>
+                    <h3 class="team-name" style="font-size:1.1rem;margin:0">${teamIcon(team.name)} ${escapeHtml(team.name)}</h3>
                     <span class="muted">Rank ${team.overall_rank} · ${team.total_points} pts</span>
                   </div>
                   <button class="share-trigger" data-team-id="${escapeHtml(team.id)}">↥ Share</button>
@@ -1781,7 +1781,7 @@
             const score = scoreFor(team, wod.id);
             return `
               <tr>
-                <td>${team.icon} ${escapeHtml(team.name)}</td>
+                <td>${teamIcon(team.name)} ${escapeHtml(team.name)}</td>
                 <td>${score?.score ? escapeHtml(score.score) : "TBA"}</td>
                 <td>${score?.points ?? "Locked"}</td>
               </tr>
@@ -1809,7 +1809,7 @@
                 <span class="pill">${escapeHtml(wod.format)}</span>
                 ${wod.time_cap ? `<span class="pill" style="border-color:rgba(235,2,21,0.4);color:var(--red)">${escapeHtml(wod.time_cap)}</span>` : ""}
               </div>
-              <p>${escapeHtml(wod.description)}</p>
+              <p>${escapeHtml(wod.description).replace(/\n/g, '<br>')}</p>
               ${movements ? `<div class="movements">${movements}</div>` : ""}
               <div class="table-wrap">
                 <table aria-label="${escapeHtml(wod.name)} scores">
@@ -1856,7 +1856,7 @@
             <span class="athlete-name">${escapeHtml(athlete.name)}</span>
             <div class="athlete-badges">${renderAthleteBadges(athlete)}</div>
           </td>
-          <td>${teamIcon(athlete.currentTeamId)}${escapeHtml(athlete.currentTeam)}</td>
+          <td>${teamIcon(athlete.currentTeam)}${escapeHtml(athlete.currentTeam)}</td>
           <td>${athlete.scores.map(escapeHtml).join("<br>")}</td>
           <td class="muted" style="font-size:0.82rem">${athlete.swapLines.length ? athlete.swapLines.map(escapeHtml).join("<br>") : "—"}${athlete.swappedOut ? `<br><button class="swap-share-trigger" data-athlete="${escapeHtml(athlete.name)}" style="margin-top:0.25rem;background:none;border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:0.65rem;cursor:pointer;padding:0.08rem 0.4rem;border-radius:4px">↥ Swap story</button>` : ""}</td>
         </tr>
@@ -1978,11 +1978,6 @@
       return String(value).padStart(2, "0");
     }
 
-    function teamIcon(teamId) {
-      const t = state.data.teams.find((tm) => tm.id === teamId);
-      return t ? t.icon + " " : "";
-    }
-
     function escapeHtml(value) {
       return String(value ?? "").replace(/[&<>"']/g, (char) => ({
         "&": "&amp;",
@@ -1991,6 +1986,13 @@
         '"': "&quot;",
         "'": "&#039;"
       }[char]));
+    }
+
+    const TEAM_ICONS = ["👑","🔥","💪","⚡","🎯","🚀","✨","💎","🏆","🎉","🧠","🦾","🔥","💥","⭐","🧩","🎲","🎸","🏋️","🥇"];
+    function teamIcon(name) {
+      let hash = 0;
+      for (let i = 0; i < name.length; i++) hash = ((hash << 5) - hash + name.charCodeAt(i)) | 0;
+      return TEAM_ICONS[Math.abs(hash) % TEAM_ICONS.length];
     }
 
     function setupPodiumTilt() {
@@ -2188,7 +2190,7 @@
       openShareModal(`
         <div class="share-card" id="shareCard">
           <div class="share-medal">${medal}</div>
-          <div class="share-team-name">${team.icon} ${escapeHtml(team.name)}</div>
+          <div class="share-team-name">${teamIcon(team.name)} ${escapeHtml(team.name)}</div>
           <div class="share-rank">Rank #${team.overall_rank} · ${team.total_points} pts</div>
           <div class="share-roster">${rosterHtml}</div>
           <div class="share-scores">${scoreCards}</div>
@@ -2211,7 +2213,7 @@
           </div>
           <div class="share-scores" style="flex-direction:column;align-items:center;gap:0.3rem">
             <div style="font-size:0.9rem;font-weight:700">→ ${escapeHtml(swappedIn)} steps in</div>
-            <div class="sh-score-wod" style="font-size:0.75rem">WOD ${wod} · ${team.icon} ${escapeHtml(team.name)}</div>
+            <div class="sh-score-wod" style="font-size:0.75rem">WOD ${wod} · ${teamIcon(team.name)} ${escapeHtml(team.name)}</div>
           </div>
           <div class="share-footer" style="margin-top:1.2rem">Chill Out Games 2026</div>
         </div>
