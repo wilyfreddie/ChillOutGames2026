@@ -21,13 +21,11 @@
     :root {
       --bg: #1f0000;
       --panel: #160303;
-      --panel-2: #240606;
       --line: rgba(255, 255, 255, 0.12);
       --text: #f6f6f6;
       --muted: #a8a8a8;
-      --red: #eb0215;
-      --blue: #2596be;
       --red: #ff4747;
+      --blue: #2596be;
       --green: #31d07b;
       --shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
     }
@@ -237,8 +235,6 @@
     }
 
     .tab-btn,
-    .division-btn,
-    .icon-btn {
       border: 1px solid var(--line);
       background: #171717;
       color: var(--text);
@@ -261,8 +257,7 @@
       background: var(--blue);
     }
 
-    .tab-btn:hover,
-    .icon-btn:hover {
+    .tab-btn:hover {
       transform: translateY(-1px);
       border-color: rgba(235, 2, 21, 0.62);
     }
@@ -936,47 +931,6 @@
       }
     }
 
-    .podium-card {
-      transform-style: preserve-3d;
-      will-change: transform;
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-    }
-
-    .swap-ticker-wrap {
-      display: none;
-      overflow: hidden;
-      background: rgba(235, 2, 21, 0.08);
-      border-bottom: 1px solid var(--line);
-      padding: 0.5rem 0;
-    }
-
-    .swap-ticker-track {
-      display: flex;
-      gap: 1.5rem;
-      animation: tickerScroll 35s linear infinite;
-      white-space: nowrap;
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-
-    .swap-ticker-wrap:hover .swap-ticker-track {
-      animation-play-state: paused;
-    }
-
-    .ticker-sep {
-      color: var(--muted);
-      opacity: 0.4;
-    }
-
-    .swap-ticker-track span.muted {
-      opacity: 0.5;
-    }
-
-    @keyframes tickerScroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
     .swap-alert {
       display: inline-block;
       width: 9px;
@@ -992,74 +946,6 @@
     @keyframes alertPulse {
       0%, 100% { opacity: 0.3; transform: scale(0.8); }
       50% { opacity: 1; transform: scale(1.35); }
-    }
-
-    .drama-banner {
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.8rem 1rem;
-      background: linear-gradient(90deg, rgba(235, 2, 21, 0.16), rgba(37, 150, 190, 0.08));
-      border: 1px solid rgba(235, 2, 21, 0.35);
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      animation: reveal 300ms ease;
-      font-size: 0.92rem;
-    }
-
-    .drama-banner button {
-      flex: 0 0 auto;
-      border: 0;
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--text);
-      border-radius: 6px;
-      padding: 0.3rem 0.6rem;
-      font-weight: 800;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-
-    .drama-banner button:hover {
-      background: rgba(255, 255, 255, 0.22);
-    }
-
-    .transfer-flow {
-      display: grid;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .transfer-flow-row {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .transfer-chip {
-      padding: 0.22rem 0.5rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--line);
-      font-size: 0.7rem;
-      font-weight: 800;
-    }
-
-    .transfer-chip.player {
-      background: rgba(37, 150, 190, 0.18);
-      border-color: rgba(37, 150, 190, 0.4);
-    }
-
-    .transfer-chip.dest {
-      background: rgba(235, 2, 21, 0.15);
-      border-color: rgba(235, 2, 21, 0.35);
-    }
-
-    .transfer-arrow {
-      color: var(--muted);
-      font-size: 0.7rem;
-      font-weight: 700;
     }
 
     @media (min-width: 621px) {
@@ -1080,166 +966,6 @@
       .podium-card:nth-child(3) { order: 3; }
     }
 
-    .share-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 50;
-      background: rgba(0,0,0,0.7);
-      place-items: center;
-      padding: 1rem;
-    }
-    .share-overlay.open { display: grid; }
-    .share-modal {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 1.5rem;
-      max-width: 460px;
-      width: 100%;
-      position: relative;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-    }
-    .share-close {
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      border: 0;
-      background: rgba(255,255,255,0.08);
-      color: var(--muted);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      z-index: 2;
-    }
-    .share-close:hover { background: rgba(255,255,255,0.15); color: var(--text); }
-    .share-card {
-      display: grid;
-      gap: 0.35rem;
-      text-align: center;
-      padding: 2rem 1.5rem;
-      border-radius: 10px;
-      background: linear-gradient(160deg, #1f0000, #0d0d0d 80%);
-      border: 1px solid var(--line);
-      position: relative;
-      overflow: hidden;
-    }
-    .share-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 15%, rgba(235,2,21,0.12), transparent 40%),
-        radial-gradient(circle at 80% 10%, rgba(37,150,190,0.1), transparent 40%);
-      pointer-events: none;
-    }
-    .share-medal { font-size: 3rem; position: relative; z-index: 1; }
-    .share-team-name {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      line-height: 1.1;
-      margin-top: 0.15rem;
-      position: relative;
-      z-index: 1;
-    }
-    .share-rank {
-      font-size: 0.9rem;
-      color: var(--blue);
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
-    }
-    .share-roster {
-      margin: 0.85rem 0 0.75rem;
-      display: grid;
-      gap: 0.2rem;
-      position: relative;
-      z-index: 1;
-    }
-    .share-athlete { font-weight: 600; font-size: 1rem; }
-    .share-scores {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      position: relative;
-      z-index: 1;
-    }
-    .share-score {
-      flex: 1;
-      max-width: 110px;
-      padding: 0.5rem 0.35rem;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(0,0,0,0.25);
-    }
-    .sh-score-val {
-      display: block;
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: var(--blue);
-    }
-    .sh-score-wod {
-      display: block;
-      font-size: 0.64rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-      font-weight: 700;
-    }
-    .sh-score-pts {
-      display: block;
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: var(--red);
-    }
-    .share-footer {
-      margin-top: 1rem;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.3);
-      font-weight: 700;
-      position: relative;
-      z-index: 1;
-    }
-    .share-actions {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-    .share-btn {
-      flex: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.35rem;
-      min-height: 44px;
-      padding: 0 1rem;
-      border: 1px solid var(--line);
-      background: #171717;
-      color: var(--text);
-      font-weight: 800;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: border-color 180ms, background 180ms;
-    }
-    .share-btn:hover {
-      border-color: var(--blue);
-      background: rgba(37,150,190,0.1);
-    }
-    .share-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
     @keyframes skeletonPulse {
       0% { opacity: 0.6; }
       50% { opacity: 1; }
@@ -1250,32 +976,6 @@
       background-size: 200% 100%;
       animation: skeletonPulse 1.5s ease-in-out infinite;
       min-height: 60px;
-    }
-    .share-trigger {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.2rem;
-      border: 1px solid var(--line);
-      background: transparent;
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 0.72rem;
-      cursor: pointer;
-      padding: 0.15rem 0.45rem;
-      border-radius: 6px;
-      transition: color 180ms, border-color 180ms, background 180ms;
-    }
-    .share-trigger:hover {
-      color: var(--blue);
-      border-color: rgba(37,150,190,0.4);
-      background: rgba(37,150,190,0.08);
-    }
-
-    .share-card.swap-share-card {
-      background: linear-gradient(160deg, #1a0808, #0d0d0d 80%);
-    }
-    .share-card.swap-share-card::before {
-      background: radial-gradient(circle at 50% 20%, rgba(235,2,21,0.15), transparent 40%);
     }
 
     .movements {
@@ -1362,8 +1062,6 @@
     </div>
   </header>
 
-  <div class="swap-ticker-wrap" id="swapTicker" aria-label="Transfer ticker"></div>
-
   <main class="app">
     <nav class="tabs" aria-label="Leaderboard sections">
       <button class="tab-btn" aria-selected="true" data-tab="leaderboard">Leaderboard</button>
@@ -1379,7 +1077,6 @@
           <p class="muted">Higher points win. Ties use the most recent released WOD rank.</p>
         </div>
       </div>
-      <div class="drama-banner" id="dramaBanner" aria-live="polite"></div>
       <div class="podium-strip" id="podiumStrip" aria-label="Podium"><div class="skeleton-pulse" style="height:174px;border-radius:8px"></div></div>
       <div class="leaderboard-layout">
         <div class="leaderboard-list" id="leaderboardList"><div class="skeleton-pulse" style="height:80px;border-radius:8px;margin-bottom:0.5rem"></div><div class="skeleton-pulse" style="height:80px;border-radius:8px;margin-bottom:0.5rem"></div><div class="skeleton-pulse" style="height:80px;border-radius:8px"></div></div>
@@ -1526,18 +1223,15 @@
 
     function renderAll() {
       renderPodium();
-      setupPodiumTilt();
       renderLeaderboard();
       renderStats();
       renderTeams();
       renderWods();
       renderAthletes();
-      renderSwapTicker();
-      renderDramaBanner();
     }
 
     function renderPodium() {
-      const teams = teamsForDivision().slice(0, 3);
+      const teams = sortedTeams().slice(0, 3);
       $("#podiumStrip").innerHTML = teams.map((team) => {
         const medals = ["🥇", "🥈", "🥉"];
         const rankClass = team.overall_rank === 1 ? "first" : team.overall_rank === 2 ? "second" : "third";
@@ -1553,7 +1247,7 @@
     }
 
     function renderLeaderboard() {
-      const teams = teamsForDivision();
+      const teams = sortedTeams();
 
       $("#leaderboardList").innerHTML = teams.map((team) => {
         const medal = ["🥇", "🥈", "🥉"][team.overall_rank - 1] || team.overall_rank;
@@ -1575,9 +1269,6 @@
               </div>
               <div class="points"><strong>${team.total_points}</strong><span class="muted">points</span></div>
               <span class="rank-change ${change.className}" title="Rank change versus previous WOD">${change.label}</span>
-            </div>
-            <div style="display:flex;justify-content:flex-end;margin-top:0.2rem">
-              <button class="share-trigger" data-team-id="${escapeHtml(team.id)}">↥ Share</button>
             </div>
             <div class="wod-points">
               ${state.data.wods.map((wod) => renderWodPoint(team, wod)).join("")}
@@ -1637,7 +1328,7 @@
     }
 
     function renderStats() {
-      const teams = teamsForDivision();
+      const teams = sortedTeams();
       const releasedWods = state.data.wods.filter((wod) => wod.released);
       const consistent = [...teams].sort((a, b) => variance(a) - variance(b))[0];
       const comeback = [...teams].sort((a, b) => rankChangeValue(b) - rankChangeValue(a))[0];
@@ -1657,7 +1348,6 @@
           <b>📣 What changed this week</b>
           <div class="change-list">${renderWeeklyChanges(teams)}</div>
         </div>
-        ${buildTransferMap()}
       `;
     }
 
@@ -1704,7 +1394,6 @@
                     <h3 class="team-name" style="font-size:1.1rem;margin:0">${teamIcon(team.name)} ${escapeHtml(team.name)}</h3>
                     <span class="muted">Rank ${team.overall_rank} · ${team.total_points} pts</span>
                   </div>
-                  <button class="share-trigger" data-team-id="${escapeHtml(team.id)}">↥ Share</button>
                 </div>
                 <ul class="roster">
                   ${currentRoster.map((athlete) => `
@@ -1741,7 +1430,7 @@
               <span><span class="strike" style="font-size:0.78rem">${escapeHtml(swap.swapped_out)}</span> <span class="muted" style="font-size:0.68rem">→</span> <strong style="font-size:0.85rem">${escapeHtml(swap.swapped_in)}</strong></span>
               <span>
                 <span class="swap-badge">WOD ${swap.wod}</span>
-                <button class="swap-share-trigger" data-team-id="${escapeHtml(team.id)}" data-out="${escapeHtml(swap.swapped_out)}" data-in="${escapeHtml(swap.swapped_in)}" data-wod="${swap.wod}" title="Share swap story" style="background:none;border:0;color:var(--muted);cursor:pointer;font-size:0.7rem;padding:0.1rem 0.2rem">↥</button>
+                
               </span>
             </div>
           `).join("")}
@@ -1858,7 +1547,7 @@
           </td>
           <td>${teamIcon(athlete.currentTeam)}${escapeHtml(athlete.currentTeam)}</td>
           <td>${athlete.scores.map(escapeHtml).join("<br>")}</td>
-          <td class="muted" style="font-size:0.82rem">${athlete.swapLines.length ? athlete.swapLines.map(escapeHtml).join("<br>") : "—"}${athlete.swappedOut ? `<br><button class="swap-share-trigger" data-athlete="${escapeHtml(athlete.name)}" style="margin-top:0.25rem;background:none;border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:0.65rem;cursor:pointer;padding:0.08rem 0.4rem;border-radius:4px">↥ Swap story</button>` : ""}</td>
+          <td class="muted" style="font-size:0.82rem">${athlete.swapLines.length ? athlete.swapLines.map(escapeHtml).join("<br>") : "—"}</td>
         </tr>
       `).join("") || `<tr><td colspan="4">No athletes found.</td></tr>`;
     }
@@ -1947,16 +1636,16 @@
         const hours = Math.floor((diff % 86400000) / 3600000);
         const minutes = Math.floor((diff % 3600000) / 60000);
         const seconds = Math.floor((diff % 60000) / 1000);
-        $("#days").textContent = pad(days);
-        $("#hours").textContent = pad(hours);
-        $("#minutes").textContent = pad(minutes);
-        $("#seconds").textContent = pad(seconds);
+        $("#days").textContent = String(days).padStart(2,"0");
+        $("#hours").textContent = String(hours).padStart(2,"0");
+        $("#minutes").textContent = String(minutes).padStart(2,"0");
+        $("#seconds").textContent = String(seconds).padStart(2,"0");
       };
       tick();
       setInterval(tick, 1000);
     }
 
-    function teamsForDivision() {
+    function sortedTeams() {
       return [...state.data.teams].sort((a, b) => a.overall_rank - b.overall_rank);
     }
 
@@ -1972,10 +1661,6 @@
 
     function formatDate(value) {
       return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${value}T00:00:00`));
-    }
-
-    function pad(value) {
-      return String(value).padStart(2, "0");
     }
 
     function escapeHtml(value) {
@@ -1995,253 +1680,8 @@
       return TEAM_ICONS[Math.abs(hash) % TEAM_ICONS.length];
     }
 
-    function setupPodiumTilt() {
-      $$(".podium-card").forEach((card) => {
-        card.addEventListener("mousemove", (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = (e.clientX - rect.left) / rect.width - 0.5;
-          const y = (e.clientY - rect.top) / rect.height - 0.5;
-          card.style.transform = `perspective(800px) rotateY(${x * 16}deg) rotateX(${y * -12}deg) scale3d(1.03,1.03,1.03)`;
-          card.style.boxShadow = `${x * 10}px ${y * 10}px 30px rgba(235,2,21,0.18), 0 22px 70px rgba(0,0,0,0.42)`;
-        });
-        card.addEventListener("mouseleave", () => {
-          card.style.transform = "";
-          card.style.boxShadow = "";
-        });
-      });
-    }
-
-    function renderSwapTicker() {
-      const swaps = state.data.teams.flatMap((team) =>
-        team.swaps.map((swap) => ({ ...swap, teamName: team.name }))
-      );
-      const container = $("#swapTicker");
-      if (!swaps.length || !container) {
-        if (container) container.style.display = "none";
-        return;
-      }
-      const items = swaps.map((swap) =>
-        `<span>${escapeHtml(swap.swapped_out)} <span class="muted">from ${escapeHtml(swap.swapped_in_from_team)} → ${escapeHtml(swap.teamName)} (WOD ${swap.wod})</span></span>`
-      );
-      const chunk = items.join(' <span class="ticker-sep">⬤</span> ');
-      container.innerHTML = `<div class="swap-ticker-track">${chunk} <span class="ticker-sep">⬤</span> ${chunk}</div>`;
-      container.style.display = "block";
-    }
-
-    function renderDramaBanner() {
-      const latest = latestReleasedWod();
-      if (!latest) return;
-      const latestSwaps = state.data.teams.flatMap((team) =>
-        team.swaps
-          .filter((swap) => swap.wod === latest.id)
-          .map((swap) => ({ ...swap, teamName: team.name }))
-      );
-      const banner = $("#dramaBanner");
-      if (!latestSwaps.length || !banner) {
-        if (banner) banner.style.display = "none";
-        return;
-      }
-      if (sessionStorage.getItem("drama-banner-dismissed") === String(latest.id)) {
-        banner.style.display = "none";
-        return;
-      }
-      const teamList = [...new Set(latestSwaps.map((s) => s.teamName))].slice(0, 3).join(", ");
-      const andOthers = new Set(latestSwaps.map((s) => s.teamName)).size > 3 ? " and others" : "";
-      banner.innerHTML = `
-        <span>🚨 <strong>${escapeHtml(latest.name)} shook the roster!</strong> ${latestSwaps.length} swap${latestSwaps.length === 1 ? "" : "s"} across ${escapeHtml(teamList)}${andOthers}.</span>
-        <button id="dismissBanner">✕</button>
-      `;
-      banner.style.display = "flex";
-      const dismissBtn = $("#dismissBanner");
-      if (dismissBtn) {
-        dismissBtn.addEventListener("click", () => {
-          banner.style.display = "none";
-          sessionStorage.setItem("drama-banner-dismissed", String(latest.id));
-        });
-      }
-    }
-
-    function buildTransferMap() {
-      const latest = latestReleasedWod();
-      if (!latest) return "";
-      const latestSwaps = state.data.teams.flatMap((team) =>
-        team.swaps
-          .filter((swap) => swap.wod === latest.id)
-          .map((swap) => ({ ...swap, teamName: team.name }))
-      );
-      if (!latestSwaps.length) return "";
-      const flows = latestSwaps.map((swap) => `
-        <div class="transfer-flow-row">
-          <span class="transfer-chip">${escapeHtml(swap.swapped_in_from_team)}</span>
-          <span class="transfer-arrow">→</span>
-          <span class="transfer-chip player">${escapeHtml(swap.swapped_in)}</span>
-          <span class="transfer-arrow">to</span>
-          <span class="transfer-chip dest">${escapeHtml(swap.teamName)}</span>
-        </div>
-      `).join("");
-      return `
-        <div class="stat-item">
-          <b>🔀 Roster shuffle for ${escapeHtml(latest.name)}</b>
-          <div class="transfer-flow">${flows}</div>
-        </div>
-      `;
-    }
-
-    document.addEventListener("click", (e) => {
-      const trigger = e.target.closest(".share-trigger");
-      if (trigger && trigger.dataset.teamId) { showShareCard(trigger.dataset.teamId); return; }
-      const swapTrigger = e.target.closest(".swap-share-trigger");
-      if (swapTrigger) {
-        if (swapTrigger.dataset.out) {
-          showSwapCard(swapTrigger.dataset.teamId, swapTrigger.dataset.out, swapTrigger.dataset.in, Number(swapTrigger.dataset.wod));
-        } else if (swapTrigger.dataset.athlete) {
-          showSwapCardForAthlete(swapTrigger.dataset.athlete);
-        }
-        return;
-      }
-      if (e.target.closest("#shareClose") || e.target === $("#shareOverlay")) {
-        $("#shareOverlay").classList.remove("open");
-      }
-    });
-
-    function openShareModal(html, filename) {
-      $("#sharePreview").innerHTML = html;
-      $("#shareOverlay").classList.add("open");
-      const shareBtn = $("#shareBtn");
-      const downloadBtn = $("#downloadBtn");
-      shareBtn.disabled = false;
-      downloadBtn.disabled = false;
-      shareBtn.textContent = "📤 Share";
-      downloadBtn.textContent = "💾 Save";
-      let canvas = null;
-      let captured = false;
-      const doCapture = () => {
-        if (canvas) return Promise.resolve(canvas);
-        shareBtn.textContent = "⏳ Generating...";
-        downloadBtn.textContent = "⏳ Generating...";
-        return new Promise((resolve, reject) => {
-          const timeout = setTimeout(() => reject(new Error("timeout")), 15000);
-          const cap = () => {
-            html2canvas($("#shareCard"), { scale: 2, backgroundColor: null, useCORS: true })
-              .then((c) => { clearTimeout(timeout); canvas = c; captured = true; shareBtn.textContent = "📤 Share"; downloadBtn.textContent = "💾 Save"; resolve(c); })
-              .catch((err) => { clearTimeout(timeout); reject(err); });
-          };
-          if (typeof html2canvas === "undefined") {
-            const s = document.createElement("script");
-            s.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
-            s.onload = cap;
-            s.onerror = () => { clearTimeout(timeout); reject(new Error("script load failed")); };
-            document.head.appendChild(s);
-          } else cap();
-        });
-      };
-      shareBtn.onclick = () => {
-        if (!captured) {
-          doCapture().then((c) => {
-            c.toBlob((blob) => {
-              const file = new File([blob], filename, { type: "image/png" });
-              if (navigator.canShare && navigator.canShare({ files: [file] })) {
-                navigator.share({ files: [file], title: "Chill Out Games 2026" });
-              } else {
-                const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url);
-              }
-            });
-          }).catch(() => { shareBtn.textContent = "❌ Failed"; setTimeout(() => { shareBtn.textContent = "📤 Share"; captured = false; canvas = null; }, 2000); });
-        } else if (canvas) {
-          canvas.toBlob((blob) => {
-            const file = new File([blob], filename, { type: "image/png" });
-            if (navigator.canShare && navigator.canShare({ files: [file] })) {
-              navigator.share({ files: [file], title: "Chill Out Games 2026" });
-            } else {
-              const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url);
-            }
-          });
-        }
-      };
-      downloadBtn.onclick = () => {
-        doCapture().then((c) => {
-          c.toBlob((blob) => {
-            const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href = url; a.download = filename; a.click(); URL.revokeObjectURL(url);
-          });
-        });
-      };
-    }
-
-    function showShareCard(teamId) {
-      const team = state.data.teams.find((t) => t.id === teamId);
-      if (!team) return;
-      const medals = ["🥇", "🥈", "🥉"];
-      const medal = medals[team.overall_rank - 1] || team.overall_rank;
-      const currentRoster = team.roster.wod4 || team.roster.wod3 || team.roster.wod1;
-      const released = state.data.wods.filter((w) => w.released);
-      const scoreCards = released.map((wod) => {
-        const score = scoreFor(team, wod.id);
-        return score ? `
-          <div class="share-score">
-            <span class="sh-score-val">${escapeHtml(score.score || "—")}</span>
-            <span class="sh-score-wod">${escapeHtml(wod.name)}</span>
-            <span class="sh-score-pts">${score.points ?? "—"} pt${score.points !== 1 ? "s" : ""}</span>
-          </div>
-        ` : "";
-      }).join("");
-      const rosterHtml = currentRoster.map((name) =>
-        `<div class="share-athlete">${escapeHtml(name)}${name === team.captain ? " 👑" : ""}</div>`
-      ).join("");
-      openShareModal(`
-        <div class="share-card" id="shareCard">
-          <div class="share-medal">${medal}</div>
-          <div class="share-team-name">${teamIcon(team.name)} ${escapeHtml(team.name)}</div>
-          <div class="share-rank">Rank #${team.overall_rank} · ${team.total_points} pts</div>
-          <div class="share-roster">${rosterHtml}</div>
-          <div class="share-scores">${scoreCards}</div>
-          <div class="share-footer">Chill Out Games 2026</div>
-        </div>
-      `, `${team.name.replace(/\s+/g, "-").toLowerCase()}.png`);
-    }
-
-    function showSwapCard(teamId, swappedOut, swappedIn, wod) {
-      const team = state.data.teams.find((t) => t.id === teamId);
-      if (!team) return;
-      openShareModal(`
-        <div class="share-card swap-share-card" id="shareCard">
-          <div style="font-size:2.5rem;position:relative;z-index:1;margin-bottom:0.25rem">🔄</div>
-          <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--red);font-weight:800;position:relative;z-index:1">TRADE ALERT</div>
-          <div class="share-team-name" style="font-size:2.2rem;margin-top:0.5rem">${escapeHtml(swappedOut)}</div>
-          <div style="position:relative;z-index:1;color:var(--muted);font-weight:600;margin:0.3rem 0 0.5rem">
-            was benched by captain<br>
-            <strong style="color:var(--text)">${escapeHtml(team.captain)} 👑</strong>
-          </div>
-          <div class="share-scores" style="flex-direction:column;align-items:center;gap:0.3rem">
-            <div style="font-size:0.9rem;font-weight:700">→ ${escapeHtml(swappedIn)} steps in</div>
-            <div class="sh-score-wod" style="font-size:0.75rem">WOD ${wod} · ${teamIcon(team.name)} ${escapeHtml(team.name)}</div>
-          </div>
-          <div class="share-footer" style="margin-top:1.2rem">Chill Out Games 2026</div>
-        </div>
-      `, `swapped-${swappedOut.replace(/\s+/g, "-").toLowerCase()}.png`);
-    }
-
-    function showSwapCardForAthlete(athleteName) {
-      for (const team of state.data.teams) {
-        const swap = team.swaps.find((s) => s.swapped_out === athleteName);
-        if (swap) {
-          showSwapCard(team.id, swap.swapped_out, swap.swapped_in, swap.wod);
-          return;
-        }
-      }
-    }
-
     loadData().catch((error) => {
       document.body.innerHTML = `<main class="app"><div class="empty">Leaderboard data failed to load: ${escapeHtml(error.message)}</div></main>`;
     });
   </script>
-  <div class="share-overlay" id="shareOverlay">
-    <div class="share-modal">
-      <button class="share-close" id="shareClose">✕</button>
-      <div id="sharePreview"></div>
-      <div class="share-actions">
-        <button class="share-btn" id="shareBtn">📤 Share</button>
-        <button class="share-btn" id="downloadBtn">💾 Save</button>
-      </div>
-    </div>
-  </div>
 </html>
